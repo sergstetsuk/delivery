@@ -1,4 +1,4 @@
-package com.example.sergal.testgui;
+package com.example.sergal.delivery;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

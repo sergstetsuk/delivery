@@ -1,4 +1,4 @@
-package com.example.sergal.testgui;
+package com.example.sergal.delivery;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class OrdersFragment extends Fragment {
+public class FuelFragment extends Fragment {
 
-    public static OrdersFragment newInstance(String text) {
+    public static FuelFragment newInstance(String text) {
 
-        OrdersFragment f = new OrdersFragment();
+        FuelFragment f = new FuelFragment();
         Bundle b = new Bundle();
         b.putString("msg", text);
 
@@ -22,9 +22,9 @@ public class OrdersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.orders_fragment, container, false);
+        View v = inflater.inflate(R.layout.fuel_fragment, container, false);
 
-        TextView tv = (TextView) v.findViewById(R.id.tvFragSecond);
+        TextView tv = (TextView) v.findViewById(R.id.tvFragThird);
         tv.setText(getArguments().getString("msg"));
 
         return v;

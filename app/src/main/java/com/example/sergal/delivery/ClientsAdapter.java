@@ -1,4 +1,4 @@
-package com.example.sergal.testgui;
+package com.example.sergal.delivery;
 
 import android.app.Activity;
 import android.content.Context;
