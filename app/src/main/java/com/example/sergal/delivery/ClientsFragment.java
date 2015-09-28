@@ -38,8 +38,7 @@ public class ClientsFragment extends Fragment {
                 "Череззабороногузадерищенко Василь Васильович",
                 "ТзОВ Тестові прибамбаси, які нікому не потрібні"
         };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.clients_adapter, R.id.name, values);
-        //ClientsAdapter adapter = new ClientsAdapter();
+        ClientsAdapter adapter = new ClientsAdapter(getActivity());
         lv.setAdapter(adapter);
         tv.setText(getArguments().getString("msg"));
 
