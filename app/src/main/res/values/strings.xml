@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestGUI</string>
+    <string name="app_name">Delivery</string>
 
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
@@ -11,4 +11,14 @@
     <string name="addContactButtonLabel">Add Contact</string>
     <string name="searchContactButtonLabel">Search Contact</string>
     <string name="showInvisible">Show Invisible Contacts (Only)</string>
+
+    <string name="ecl_header">Add or edit client</string>
+    <string name="ecl_name">Name, Organization</string>
+    <string name="ecl_cat">street type</string>
+    <string name="ecl_addr">street Name</string>
+    <string name="ecl_house">house number</string>
+    <string name="ecl_office">office number</string>
+    <string name="ecl_phone">phone number</string>
+    <string name="ecl_add">OK</string>
+    <string name="ecl_reset">Reset</string>
 </resources>
