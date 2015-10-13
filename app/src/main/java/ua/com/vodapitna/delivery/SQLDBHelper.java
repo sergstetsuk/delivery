@@ -28,6 +28,7 @@ public class SQLDBHelper extends SQLiteOpenHelper {
             "streetname TEXT, " +
             "house TEXT, " +
             "office INTEGER, " +
+            "phone TEXT, " +
             "inserttimestamp TIMESTAMP, " +
             "updatetimestamp TIMESTAMP, " +
             "PRIMARY KEY (clientid), " +
@@ -54,13 +55,13 @@ public class SQLDBHelper extends SQLiteOpenHelper {
             "orderid INTEGER,\n" +
             "clientid INTEGER,\n" +
             "inserttimestamp TIMESTAMP,\n" +
-            "fulfiltimestamp TIMESTAMP, --на коли привезти замовлення\n" +
+            "fulfiltimestamp TIMESTAMP,\n" +
             "updatetimestamp TIMESTAMP,\n" +
             "closetimestamp TIMESTAMP,\n" +
             "PRIMARY KEY (orderid)\n" +
             "FOREIGN KEY (clientid) REFERENCES clients(clientid)\n" +
             ");\n" +
-            "CREATE TABLE --IF NOT EXISTS\n" +
+            "CREATE TABLE\n" +
             "sellhistory(\n" +
             "sellid INTEGER,\n" +
             "orderid INTEGER,\n" +
@@ -76,19 +77,8 @@ public class SQLDBHelper extends SQLiteOpenHelper {
             "INSERT INTO streetcateg (streetcategid, streetcateg) VALUES (3, \"пл.\");\n" +
             "INSERT INTO streetcateg (streetcategid, streetcateg) VALUES (4, \"бульв.\");\n" +
             "INSERT INTO streetcateg (streetcategid, streetcateg) VALUES (5, \"перев.\");\n" +
-            "INSERT INTO streetcateg (streetcategid, streetcateg) VALUES (6, \"набер.\");\n" +
-            "INSERT INTO clients (clientid, clientname, streetcategid, streetname)\n" +
-            "VALUES (1,\"ПП Іванов\", 1, \"Шевченка\");\n" +
-            "INSERT INTO clients (clientid, clientname, streetcategid, streetname)\n" +
-            "VALUES (2,\"ПП Петров\", 3, \"Галицька\");\n" +
-            "INSERT INTO clients (clientid, clientname, streetcategid, streetname)\n" +
-            "VALUES (3,\"Сидоров Сидор Сидорович\", 2, \"Оболонський\");\n" +
-            "INSERT INTO clients (clientid, clientname, streetcategid, streetname)\n" +
-            "VALUES (4,\"С Сидорович\", 2, \"Оболонський\");\n" +
+            "INSERT INTO streetcateg (streetcategid, streetcateg) VALUES (6, \"набер.\");\n";
 
-            "INSERT INTO phones (phonenumb,clientid) VALUES (\"+380505152000\",1);\n" +
-            "INSERT INTO phones (phonenumb,clientid) VALUES (\"+380975152000\",1);\n" +
-            "INSERT INTO phones (phonenumb,clientid) VALUES (\"+380322343300\",2);\n";
 
     public SQLDBHelper(Context context, String name, CursorFactory factory,
                        int version) {
