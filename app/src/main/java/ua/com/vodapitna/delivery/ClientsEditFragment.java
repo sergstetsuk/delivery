@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 /**
  * Created by sergal on 06.10.15.
@@ -83,13 +84,17 @@ public class ClientsEditFragment extends DialogFragment {
                             +"','"+clientPhoneEtxt.getText()
                             +"');");
                 }
+                    ListView lv = (ListView) getActivity().findViewById(R.id.lvContactList);
+                    ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
+                    ad.notifyDataSetChanged();
                     dismiss();
-            }
+                }
         });
         clientCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
+                //Data not changed. No need to update view
             }
         });
 
