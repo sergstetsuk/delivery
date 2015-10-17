@@ -30,7 +30,9 @@ public class ClientsAdapter extends BaseAdapter {
 
     @Override
     public void notifyDataSetChanged() {
-        mCursor = mDbHandler.selectQuery("SELECT * FROM clients;");
+        //mCursor = mDbHandler.selectQuery("SELECT * FROM clients;");
+        mCursor = mDbHandler.selectQuery("SELECT c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, "+
+                "c.phone FROM clients c LEFT JOIN streetcateg s ON s.streetcategid=c.streetcategid;");
         super.notifyDataSetChanged();
     }
 
@@ -67,12 +69,12 @@ public class ClientsAdapter extends BaseAdapter {
         };
 
         bt.setOnClickListener(makeListener);
-        name.setText(mCursor.getString(mCursor.getColumnIndex("clientname")));
-        address.setText(mCursor.getString(mCursor.getColumnIndex("streetname")));
-        // Setting all values in listview
-        //name.setText(client.get(CustomizedListView.KEY_NAME));
-        //address.setText(client.get(CustomizedListView.KEY_ADDRESS));
-        //telephone.setText(client.get(CustomizedListView.KEY_TELEPHONE));
+        name.setText(mCursor.getString(mCursor.getColumnIndex("c.clientname")));
+        address.setText(mCursor.getString(mCursor.getColumnIndex("s.streetcateg"))+
+                " "+mCursor.getString(mCursor.getColumnIndex("c.streetname"))+
+                ", "+mCursor.getString(mCursor.getColumnIndex("c.house"))+
+                "/"+mCursor.getString(mCursor.getColumnIndex("c.office")));
+        telephone.setText(mCursor.getString(mCursor.getColumnIndex("c.phone")));
         return vi;
     }
 }

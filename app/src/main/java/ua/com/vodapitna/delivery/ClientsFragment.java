@@ -52,14 +52,14 @@ public class ClientsFragment extends Fragment {
         btsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*SQLHandler mDbHandler = new SQLHandler(getContext());
-                mDbHandler.executeQuery("DELETE FROM clients WHERE clientid = (SELECT MAX(clientid) FROM clients);");
-                */
-                ClientsEditFragment clienteditdialog = new ClientsEditFragment();
+                SQLHandler mDbHandler = new SQLHandler(getContext());
+                mDbHandler.executeQuery("DELETE FROM clients;");
+
+                /*ClientsEditFragment clienteditdialog = new ClientsEditFragment();
                 Bundle b = new Bundle();
                 b.putString("clientid","2");
                 clienteditdialog.setArguments(b);
-                clienteditdialog.show(getFragmentManager(),null);
+                clienteditdialog.show(getFragmentManager(),null);*/
                 ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
                 ad.notifyDataSetChanged();
 
