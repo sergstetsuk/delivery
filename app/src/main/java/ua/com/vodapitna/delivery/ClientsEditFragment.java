@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.util.Log;
 
 /**
  * Created by sergal on 06.10.15.
@@ -47,10 +48,14 @@ public class ClientsEditFragment extends DialogFragment {
         final String clientid = getArguments().getString("clientid");
         if(clientid != null) {
             SQLHandler mDbHandler = new SQLHandler(getContext());
-            Cursor mCursor = mDbHandler.selectQuery("SELECT c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, " +
-                    "c.phone FROM clients c LEFT JOIN streetcateg s ON s.streetcategid=c.streetcategid; WHERE clientid='" + clientid + "';");
-
-            clientPhoneEtxt.setText(mCursor.getString(mCursor.getColumnIndex("c.phone")));
+            Cursor mCursor = mDbHandler.selectQuery("SELECT c.clientname, c.streetname, c.house, c.office, c.phone FROM clients c WHERE clientid=" + clientid + ";");
+            mCursor.moveToFirst();
+            clientNameEtxt.setText(mCursor.getString(mCursor.getColumnIndex("clientname")));
+            clientAddrEtxt.setText(mCursor.getString(mCursor.getColumnIndex("streetname")));
+            clientHouseEtxt.setText(mCursor.getString(mCursor.getColumnIndex("house")));
+            clientOfficeEtxt.setText(mCursor.getString(mCursor.getColumnIndex("office")));
+            clientPhoneEtxt.setText(mCursor.getString(mCursor.getColumnIndex("phone")));
+            mCursor.close();
         }
         //builder.setTitle(R.string.ecl_header);
 /*        builder.setPositiveButton(R.string.ecl_add,
@@ -62,19 +67,24 @@ public class ClientsEditFragment extends DialogFragment {
                 public void onClick(View v) {
                  if(clientid != null) {
                     SQLHandler mDbHandler = new SQLHandler(getContext());
-                    mDbHandler.executeQuery("UPDATE clients (clientname, streetcategid, streetname, house, office,phone) "
-                            +"VALUES ("
-                            +clientNameEtxt.getText()
-                            +",1"
-                            +","+clientAddrEtxt.getText()
-                            +","+clientHouseEtxt.getText()
-                            +","+clientOfficeEtxt.getText()
-                            +","+clientPhoneEtxt.getText()
-                            +" WHERE clientid='"+clientid+"');");
+                     
+                    String query = "UPDATE clients SET "
+                            + "clientname ='"
+                            + clientNameEtxt.getText()
+                            //~ ", streetcategid, streetname, house, office, phone) "
+                            //~ +"','1"
+                            //~ +"','"+clientAddrEtxt.getText()
+                            //~ +"','"+clientHouseEtxt.getText()
+                            //~ +"','"+clientOfficeEtxt.getText()
+                            //~ +"','"+clientPhoneEtxt.getText()
+                            + "');";// WHERE clientid='"+clientid+"';";
+                    mDbHandler.executeQuery(query);
+                    Log.d("vodapitna.SQLWATCH",query);
+                    
                 }
                 else {
                     SQLHandler mDbHandler = new SQLHandler(getContext());
-                    mDbHandler.executeQuery("INSERT INTO clients (clientname, streetcategid, streetname, house, office, phone) "
+                    String query = "INSERT INTO clients (clientname, streetcategid, streetname, house, office, phone) "
                             +"VALUES ('"
                             +clientNameEtxt.getText()
                             +"','1"
@@ -82,7 +92,9 @@ public class ClientsEditFragment extends DialogFragment {
                             +"','"+clientHouseEtxt.getText()
                             +"','"+clientOfficeEtxt.getText()
                             +"','"+clientPhoneEtxt.getText()
-                            +"');");
+                            +"');";
+                    mDbHandler.executeQuery(query);
+                    Log.d("vodapitna.SQLWATCH",query);
                 }
                     ListView lv = (ListView) getActivity().findViewById(R.id.lvContactList);
                     ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();

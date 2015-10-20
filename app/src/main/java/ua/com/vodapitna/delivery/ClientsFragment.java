@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,7 +32,18 @@ public class ClientsFragment extends Fragment {
         Button btadd = (Button) v.findViewById(R.id.btAddContactButton);
         Button btsearch = (Button) v.findViewById(R.id.btSearchContactButton);
         ClientsAdapter adapter = new ClientsAdapter(getActivity());
-
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ClientsEditFragment clienteditdialog = new ClientsEditFragment();
+                Bundle b = new Bundle();
+                b.putString("clientid", String.valueOf(id));
+                clienteditdialog.setArguments(b);
+                clienteditdialog.show(getFragmentManager(), null);
+                ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+            }
+        });
         btadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

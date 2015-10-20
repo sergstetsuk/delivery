@@ -31,7 +31,7 @@ public class ClientsAdapter extends BaseAdapter {
     @Override
     public void notifyDataSetChanged() {
         //mCursor = mDbHandler.selectQuery("SELECT * FROM clients;");
-        mCursor = mDbHandler.selectQuery("SELECT c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, "+
+        mCursor = mDbHandler.selectQuery("SELECT c.clientid, c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, "+
                 "c.phone FROM clients c LEFT JOIN streetcateg s ON s.streetcategid=c.streetcategid;");
         super.notifyDataSetChanged();
     }
@@ -44,8 +44,11 @@ public class ClientsAdapter extends BaseAdapter {
         return position;
     }
 
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int position)
+    {
+        mCursor.moveToPosition(position);
+        long index = mCursor.getLong(mCursor.getColumnIndex("c.clientid"));
+        return index;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {

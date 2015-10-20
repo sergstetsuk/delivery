@@ -8,6 +8,7 @@ public class SQLHandler {
 
     public static final String DATABASE_NAME = "DELIVERY_DATABASE";
     public static final int DATABASE_VERSION = 1;
+    //private static DatabaseHelper mInstance = null;
     Context context;
     SQLiteDatabase sqlDatabase;
     SQLDBHelper dbHelper;
