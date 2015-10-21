@@ -31,7 +31,7 @@
             android:nextFocusDown="@+id/ecl_cat"
             android:singleLine="true" />
 
-        <EditText
+        <Spinner
             android:id="@+id/ecl_cat"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

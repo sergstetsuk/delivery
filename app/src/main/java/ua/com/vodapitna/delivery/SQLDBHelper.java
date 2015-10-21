@@ -79,10 +79,23 @@ public class SQLDBHelper extends SQLiteOpenHelper {
             "INSERT INTO streetcateg (streetcategid, streetcateg) VALUES (5, \"перев.\");\n" +
             "INSERT INTO streetcateg (streetcategid, streetcateg) VALUES (6, \"набер.\");\n";
 
+    private static SQLDBHelper sInstance = null;
+    public static final String DATABASE_NAME = "DELIVERY_DATABASE";
+    public static final int DATABASE_VERSION = 1;
 
-    public SQLDBHelper(Context context, String name, CursorFactory factory,
-                       int version) {
-        super(context, name, factory, version);
+
+    public static synchronized SQLDBHelper getInstance(Context context) {
+    // Use the application context, which will ensure that you 
+    // don't accidentally leak an Activity's context.
+    // See this article for more information: http://bit.ly/6LRzfx
+        if (sInstance == null) {
+          sInstance = new SQLDBHelper(context.getApplicationContext());
+        }
+        return sInstance;
+    }
+
+    private SQLDBHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -94,7 +107,6 @@ public class SQLDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //db.execSQL(SCRIPT_DROP_DATABASE);
         MultiExecSQL(db,SCRIPT_DROP_DATABASE);
         onCreate(db);
     }
