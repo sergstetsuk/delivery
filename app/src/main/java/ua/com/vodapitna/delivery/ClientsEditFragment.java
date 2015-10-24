@@ -45,8 +45,8 @@ public class ClientsEditFragment extends DialogFragment {
         final EditText clientHouseEtxt = (EditText) customDialogView.findViewById(R.id.ecl_house);
         final EditText clientOfficeEtxt = (EditText) customDialogView.findViewById(R.id.ecl_office);
         final EditText clientPhoneEtxt = (EditText) customDialogView.findViewById(R.id.ecl_phone);
-        Button clientOkButton = (Button) customDialogView.findViewById(R.id.button_add);
-        Button clientCancelButton = (Button) customDialogView.findViewById(R.id.button_reset);
+        Button clientOkButton = (Button) customDialogView.findViewById(R.id.button_ok);
+        Button clientCancelButton = (Button) customDialogView.findViewById(R.id.button_cancel);
 
         final String clientid = getArguments().getString("clientid");
         SQLHandler mDbHandler = new SQLHandler(getContext());

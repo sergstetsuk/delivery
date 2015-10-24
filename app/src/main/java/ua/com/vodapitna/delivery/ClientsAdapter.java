@@ -1,6 +1,7 @@
 package ua.com.vodapitna.delivery;
 
-import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,11 +17,11 @@ import android.widget.TextView;
 public class ClientsAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
-    private Activity mActivity;
+    private FragmentActivity mActivity;
     private SQLHandler mDbHandler;
     private Cursor mCursor;
 
-    public ClientsAdapter(Activity a) {
+    public ClientsAdapter(FragmentActivity a) {
         mActivity = a;
         mDbHandler = new SQLHandler(a.getBaseContext());
         //mCursor = mDbHandler.selectQuery("SELECT * FROM clients;");
@@ -60,10 +61,10 @@ public class ClientsAdapter extends BaseAdapter {
         TextView name = (TextView) vi.findViewById(R.id.name); // name
         final TextView address = (TextView) vi.findViewById(R.id.address);
         final TextView telephone = (TextView) vi.findViewById(R.id.telephone);
-        ImageButton bt = (ImageButton) vi.findViewById(R.id.callButton);
+        ImageButton btCall = (ImageButton) vi.findViewById(R.id.callButton);
 
         //click listener for CALL action
-        final View.OnClickListener makeListener = new View.OnClickListener() {
+        final View.OnClickListener makeCallListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + telephone.getText()));
@@ -71,7 +72,24 @@ public class ClientsAdapter extends BaseAdapter {
             }
         };
 
-        bt.setOnClickListener(makeListener);
+        btCall.setOnClickListener(makeCallListener);
+        
+        ImageButton btAddOrder = (ImageButton) vi.findViewById(R.id.addOrderButton);
+        
+        //click listener for CALL action
+        final View.OnClickListener addOrderListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OrdersEditFragment orderseditdialog = new OrdersEditFragment();
+                Bundle b = new Bundle();
+                b.putString("clientid", null);
+                orderseditdialog.setArguments(b);
+                orderseditdialog.show(mActivity.getSupportFragmentManager(), null);
+            }
+        };
+
+        btAddOrder.setOnClickListener(addOrderListener);
+        
         name.setText(mCursor.getString(mCursor.getColumnIndex("c.clientname")));
         address.setText(mCursor.getString(mCursor.getColumnIndex("s.streetcateg"))+
                 " "+mCursor.getString(mCursor.getColumnIndex("c.streetname"))+

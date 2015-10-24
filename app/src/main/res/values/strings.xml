@@ -19,6 +19,16 @@
     <string name="ecl_house">house number</string>
     <string name="ecl_office">office number</string>
     <string name="ecl_phone">phone number</string>
-    <string name="ecl_add">OK</string>
-    <string name="ecl_reset">Reset</string>
+    <string name="ecl_ok">OK</string>
+    <string name="ecl_cancel">Cancel</string>
+
+    <string name="eor_header">Add or edit order</string>
+    <string name="eor_name">Name, Organization</string>
+    <string name="eor_cat">Type</string>
+    <string name="eor_addr">Address/Quantity</string>
+    <string name="eor_house">House</string>
+    <string name="eor_office">Office</string>
+    <string name="eor_phone">Phone</string>
+    <string name="eor_ok">OK</string>
+    <string name="eor_cancel">Cancel</string>
 </resources>
