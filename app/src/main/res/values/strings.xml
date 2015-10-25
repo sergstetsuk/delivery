@@ -1,34 +1,41 @@
 <resources>
     <string name="app_name">Delivery</string>
+    <string name="action_settings">Налаштування</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="addContactButtonLabel">Додати</string>
+    <string name="searchContactButtonLabel">Пошук</string>
+    <string name="showInvisible">Показати приховані</string>
 
-    <string name="hello_world">Hello world!</string>
-
-    <string name="action_settings">Settings</string>
-    <string name="addContactButtonLabel">Add Contact</string>
-    <string name="searchContactButtonLabel">Search Contact</string>
-    <string name="showInvisible">Show Invisible Contacts (Only)</string>
-
-    <string name="ecl_header">Add or edit client</string>
-    <string name="ecl_name">Name, Organization</string>
-    <string name="ecl_cat">street type</string>
-    <string name="ecl_addr">street Name</string>
-    <string name="ecl_house">house number</string>
-    <string name="ecl_office">office number</string>
-    <string name="ecl_phone">phone number</string>
+    <string name="ecl_header">Картка клієнта</string>
+    <string name="ecl_name">ПІБ, Організація</string>
+    <string name="ecl_cat">вулиця</string>
+    <string name="ecl_addr">Адреса</string>
+    <string name="ecl_house">Будинок</string>
+    <string name="ecl_office">Офіс</string>
+    <string name="ecl_floor">Поверх</string>
+    <string name="ecl_quantity">Кількість бутилів</string>
+    <string name="ecl_price">Вартість 1 бутиля</string>
+    <string name="ecl_bottletype">Тип бутиля</string>
+    <string name="ecl_cooler">Кулер</string>
+    <string name="ecl_phone">Телефон</string>
+    <string name="ecl_contact">Контактна особа</string>
+    <string name="ecl_phone1">Телефон</string>
+    <string name="ecl_contact1">Контактна особи</string>
+    <string name="ecl_comment">Примітки</string>
+    <string name="ecl_firstorderdate">Дата першого замовлення</string>
+    <string name="ecl_lastorderdate">Дата останнього замовлення</string>
+    <string name="ecl_clienttype">Тип клієнта</string>
+    <string name="ecl_id">ID-клієнта</string>
     <string name="ecl_ok">OK</string>
-    <string name="ecl_cancel">Cancel</string>
+    <string name="ecl_cancel">Відміна</string>
 
-    <string name="eor_header">Add or edit order</string>
-    <string name="eor_name">Name, Organization</string>
-    <string name="eor_cat">Type</string>
-    <string name="eor_addr">Address/Quantity</string>
-    <string name="eor_house">House</string>
-    <string name="eor_office">Office</string>
-    <string name="eor_phone">Phone</string>
+    <string name="eor_header">Картка замовлення</string>
+    <string name="eor_name">ПІБ, Організація</string>
+    <string name="eor_cat">Тип</string>
+    <string name="eor_addr">Адреса/Кількість</string>
+    <string name="eor_house">Будинок</string>
+    <string name="eor_office">Офіс</string>
+    <string name="eor_phone">Телефон</string>
     <string name="eor_ok">OK</string>
-    <string name="eor_cancel">Cancel</string>
+    <string name="eor_cancel">Відміна</string>
 </resources>

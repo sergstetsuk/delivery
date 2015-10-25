@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_orange_dark"
     android:orientation="vertical">
-<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
--->
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,8 +29,8 @@
             android:ems="10"
             android:hint="@string/ecl_name"
             android:nextFocusDown="@+id/ecl_cat"
-            android:inputType="textCapWords"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:inputType="textCapWords" />
 
         <Spinner
             android:id="@+id/ecl_cat"
@@ -47,8 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ecl_cat"
             android:hint="@string/ecl_addr"
-            android:inputType="textCapWords"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:inputType="textCapWords" />
 
         <EditText
             android:id="@+id/ecl_house"
@@ -56,7 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ecl_addr"
             android:hint="@string/ecl_house"
-            android:inputType="textCapWords"
+            android:inputType="number"
+            android:digits="0123456789абвгдеєжзиіїклмнопрстуфхцчшщюя"
             android:singleLine="true" />
         <EditText
             android:id="@+id/ecl_office"
@@ -64,21 +65,123 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ecl_house"
             android:hint="@string/ecl_office"
+            android:singleLine="true" 
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/ecl_floor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_office"
+            android:hint="@string/ecl_floor"
+            android:singleLine="true" 
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/ecl_quantity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_floor"
+            android:hint="@string/ecl_quantity"
+            android:singleLine="true" 
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/ecl_price"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_quantity"
+            android:hint="@string/ecl_price"
+            android:singleLine="true" 
+            android:inputType="numberDecimal"/>
+        <Spinner
+            android:id="@+id/ecl_bottletype"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_price"
+            android:hint="@string/ecl_bottletype"
             android:singleLine="true" />
+        <Spinner
+            android:id="@+id/ecl_cooler"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_bottletype"
+            android:hint="@string/ecl_cooler"
+            android:singleLine="true" 
+            android:inputType="number"/>
         <EditText
             android:id="@+id/ecl_phone"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ecl_office"
+            android:layout_below="@+id/ecl_cooler"
             android:hint="@string/ecl_phone"
-            android:singleLine="false"
+            android:singleLine="true" 
             android:inputType="phone"/>
+        <EditText
+            android:id="@+id/ecl_contact"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_phone"
+            android:hint="@string/ecl_contact"
+            android:singleLine="true" 
+            android:inputType="textCapWords"/>
+        <EditText
+            android:id="@+id/ecl_phone1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_contact"
+            android:hint="@string/ecl_phone1"
+            android:singleLine="true" 
+            android:inputType="phone"/>
+        <EditText
+            android:id="@+id/ecl_contact1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_phone1"
+            android:hint="@string/ecl_contact1"
+            android:singleLine="true" 
+            android:inputType="textCapWords" />
+        <EditText
+            android:id="@+id/ecl_comment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_contact1"
+            android:singleLine="true" 
+            android:hint="@string/ecl_comment" />
+        <EditText
+            android:id="@+id/ecl_firstorderdate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_comment"
+            android:hint="@string/ecl_firstorderdate"
+            android:singleLine="true" 
+            android:inputType="date"/>
+        <EditText
+            android:id="@+id/ecl_lastorderdate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_firstorderdate"
+            android:hint="@string/ecl_lastorderdate"
+            android:singleLine="true" 
+            android:inputType="date" />
+        <EditText
+            android:id="@+id/ecl_clienttype"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_lastorderdate"
+            android:singleLine="true" 
+            android:hint="@string/ecl_clienttype" />
+        <EditText
+            android:id="@+id/ecl_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ecl_clienttype"
+            android:hint="@string/ecl_id"
+            android:singleLine="true" 
+            android:inputType="number" />
 
         <LinearLayout
             android:id="@+id/layout_submit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ecl_phone"
+            android:layout_below="@id/ecl_id"
             android:layout_margin="5dp"
             android:orientation="horizontal"
             android:weightSum="2" >
@@ -99,5 +202,5 @@
         </LinearLayout>
     </RelativeLayout>
 
-<!--</ScrollView>-->
+</ScrollView>
 </LinearLayout>
