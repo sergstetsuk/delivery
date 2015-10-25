@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Spinner;
+import android.util.Log;
 
 
 public class ClientsAdapter extends BaseAdapter {
@@ -24,7 +26,6 @@ public class ClientsAdapter extends BaseAdapter {
     public ClientsAdapter(FragmentActivity a) {
         mActivity = a;
         mDbHandler = new SQLHandler(a.getBaseContext());
-        //mCursor = mDbHandler.selectQuery("SELECT * FROM clients;");
         notifyDataSetChanged();
         inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -32,8 +33,14 @@ public class ClientsAdapter extends BaseAdapter {
     @Override
     public void notifyDataSetChanged() {
         //mCursor = mDbHandler.selectQuery("SELECT * FROM clients;");
-        mCursor = mDbHandler.selectQuery("SELECT c.clientid, c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, "+
-                "c.phone FROM clients c LEFT JOIN streetcateg s ON s.streetcategid=c.streetcategid;");
+        Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svClientsSortMode);
+        if(sortselect==null || sortselect.getSelectedItemId()==0) {
+            mCursor = mDbHandler.selectQuery("SELECT c.clientid, c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, "+
+                "c.phone FROM clients c LEFT JOIN streetcateg s ON s.streetcategid=c.streetcategid ORDER BY c.streetname ASC;");
+        } else {
+            mCursor = mDbHandler.selectQuery("SELECT c.clientid, c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, "+
+                "c.phone FROM clients c LEFT JOIN streetcateg s ON s.streetcategid=c.streetcategid ORDER BY c.clientname ASC;");
+        }
         super.notifyDataSetChanged();
     }
 

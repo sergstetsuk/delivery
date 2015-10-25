@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Spinner;
 
 public class ClientsFragment extends Fragment {
 
@@ -29,6 +30,7 @@ public class ClientsFragment extends Fragment {
 
         TextView tv = (TextView) v.findViewById(R.id.tvHeader);
         final ListView lv = (ListView) v.findViewById(R.id.lvContactList);
+        Spinner spinOrder = (Spinner) v.findViewById(R.id.svClientsSortMode);
         Button btadd = (Button) v.findViewById(R.id.btAddContactButton);
         Button btsearch = (Button) v.findViewById(R.id.btSearchContactButton);
         ClientsAdapter adapter = new ClientsAdapter(getActivity());
@@ -40,6 +42,18 @@ public class ClientsFragment extends Fragment {
                 b.putString("clientid", String.valueOf(id));
                 clienteditdialog.setArguments(b);
                 clienteditdialog.show(getFragmentManager(), null);
+                //~ ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
+                //~ ad.notifyDataSetChanged();
+            }
+        });
+        spinOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+            }
+            //@Override
+            public void onNothingSelected(AdapterView<?> parent) {
                 ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
                 ad.notifyDataSetChanged();
             }
