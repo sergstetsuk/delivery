@@ -35,11 +35,9 @@ public class ClientsAdapter extends BaseAdapter {
         //mCursor = mDbHandler.selectQuery("SELECT * FROM clients;");
         Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svClientsSortMode);
         if(sortselect==null || sortselect.getSelectedItemId()==0) {
-            mCursor = mDbHandler.selectQuery("SELECT c.clientid, c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, "+
-                "c.phone FROM clients c LEFT JOIN streetcateg s ON s.streetcategid=c.streetcategid ORDER BY c.streetname ASC;");
+            mCursor = mDbHandler.selectQuery("SELECT c.* FROM clients c ORDER BY c.addr ASC;");
         } else {
-            mCursor = mDbHandler.selectQuery("SELECT c.clientid, c.clientname, c.streetcategid, s.streetcateg, c.streetname, c.house, c.office, "+
-                "c.phone FROM clients c LEFT JOIN streetcateg s ON s.streetcategid=c.streetcategid ORDER BY c.clientname ASC;");
+            mCursor = mDbHandler.selectQuery("SELECT c.* FROM clients c ORDER BY c.name ASC;");
         }
         super.notifyDataSetChanged();
     }
@@ -55,7 +53,7 @@ public class ClientsAdapter extends BaseAdapter {
     public long getItemId(int position)
     {
         mCursor.moveToPosition(position);
-        long index = mCursor.getLong(mCursor.getColumnIndex("c.clientid"));
+        long index = mCursor.getLong(mCursor.getColumnIndex("c.id"));
         return index;
     }
 
@@ -80,29 +78,30 @@ public class ClientsAdapter extends BaseAdapter {
         };
 
         btCall.setOnClickListener(makeCallListener);
-        
+
         ImageButton btAddOrder = (ImageButton) vi.findViewById(R.id.addOrderButton);
-        
+
         //click listener for CALL action
         final View.OnClickListener addOrderListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OrdersEditFragment orderseditdialog = new OrdersEditFragment();
                 Bundle b = new Bundle();
-                b.putString("clientid", null);
+                b.putString("id", null);
                 orderseditdialog.setArguments(b);
                 orderseditdialog.show(mActivity.getSupportFragmentManager(), null);
             }
         };
 
         btAddOrder.setOnClickListener(addOrderListener);
-        
-        name.setText(mCursor.getString(mCursor.getColumnIndex("c.clientname")));
-        address.setText(mCursor.getString(mCursor.getColumnIndex("s.streetcateg"))+
-                " "+mCursor.getString(mCursor.getColumnIndex("c.streetname"))+
+
+        name.setText(mCursor.getString(mCursor.getColumnIndex("c.name")));
+        address.setText(mCursor.getString(mCursor.getColumnIndex("c.cat"))+
+                " "+mCursor.getString(mCursor.getColumnIndex("c.addr"))+
                 ", "+mCursor.getString(mCursor.getColumnIndex("c.house"))+
                 "/"+mCursor.getString(mCursor.getColumnIndex("c.office")));
         telephone.setText(mCursor.getString(mCursor.getColumnIndex("c.phone")));
+	/*todo: need to check phone1 and show*/
         return vi;
     }
 }
