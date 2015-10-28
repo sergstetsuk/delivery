@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,33 @@ public class OrdersEditFragment extends DialogFragment {
 	final String orderid = getArguments().getString("orderid");
 	SQLHandler mDbHandler = new SQLHandler(getContext());
 
+	if(orderid != null) {
+		Cursor mCursor = mDbHandler.selectQuery("SELECT o.*, datetime(o.completetimestamp,'localtime') as localcompletetimestamp, datetime(o.changed,'localtime') as localchanged FROM orders o WHERE id=" + orderid + ";");
+		mCursor.moveToFirst();
+		Name.setText(mCursor.getString(mCursor.getColumnIndex("o.name")));
+		Cat.setSelection(((ArrayAdapter) Cat.getAdapter()).getPosition(mCursor.getString(mCursor.getColumnIndex("o.cat"))));
+		Addr.setText(mCursor.getString(mCursor.getColumnIndex("o.addr")));
+		House.setText(mCursor.getString(mCursor.getColumnIndex("o.house")));
+		Office.setText(mCursor.getString(mCursor.getColumnIndex("o.office")));
+		Floor.setText(mCursor.getString(mCursor.getColumnIndex("o.floor")));
+		Quantity.setText(mCursor.getString(mCursor.getColumnIndex("o.quantity")));
+		Price.setText(mCursor.getString(mCursor.getColumnIndex("o.price")));
+		BottleType.setSelection(((ArrayAdapter) BottleType.getAdapter()).getPosition(mCursor.getString(mCursor.getColumnIndex("o.bottletype"))));
+		Cooler.setText(mCursor.getString(mCursor.getColumnIndex("o.cooler")));
+		Phone.setText(mCursor.getString(mCursor.getColumnIndex("o.phone")));
+		Contact.setText(mCursor.getString(mCursor.getColumnIndex("o.contact")));
+		Phone1.setText(mCursor.getString(mCursor.getColumnIndex("o.phone1")));
+		Contact1.setText(mCursor.getString(mCursor.getColumnIndex("o.contact1")));
+		Comment.setText(mCursor.getString(mCursor.getColumnIndex("o.comment")));
+		OrderTimeStamp.setText(mCursor.getString(mCursor.getColumnIndex("o.ordertimestamp")));
+		Result.setSelection(((ArrayAdapter) Result.getAdapter()).getPosition(mCursor.getString(mCursor.getColumnIndex("o.result"))));
+		CompleteTimeStamp.setText(mCursor.getString(mCursor.getColumnIndex("localcompletetimestamp")));
+		Type.setText(mCursor.getString(mCursor.getColumnIndex("o.type")));
+		CustomId.setText(mCursor.getString(mCursor.getColumnIndex("o.customid")));
+		Changed.setText(getActivity().getResources().getString(R.string.eor_changed)
+			+ mCursor.getString(mCursor.getColumnIndex("localchanged")));
+		mCursor.close();
+	} else
 	if(clientid != null) {
 		Cursor mCursor = mDbHandler.selectQuery("SELECT c.*, datetime(c.changed,'localtime') as localchanged FROM clients c WHERE id=" + clientid + ";");
 		mCursor.moveToFirst();
@@ -154,6 +182,8 @@ public class OrdersEditFragment extends DialogFragment {
 				mDbHandler.executeQuery(query);
 				Log.d("vodapitna.SQLWATCH",query);
 			}
+			ViewPager pager = (ViewPager) getActivity().findViewById(R.id.viewPager);
+			pager.setCurrentItem(1); //Switch to orders
 			ListView lv = (ListView) getActivity().findViewById(R.id.lvOrdersList);
 			OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
 			ad.notifyDataSetChanged();
