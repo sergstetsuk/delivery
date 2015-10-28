@@ -52,11 +52,25 @@
 
 	<string name="eor_header">Картка замовлення</string>
 	<string name="eor_name">ПІБ, Організація</string>
-	<string name="eor_cat">Тип</string>
-	<string name="eor_addr">Адреса/Кількість</string>
+	<string name="eor_cat">вулиця</string>
+	<string name="eor_addr">Адреса</string>
 	<string name="eor_house">Будинок</string>
 	<string name="eor_office">Офіс</string>
+	<string name="eor_floor">Поверх</string>
+	<string name="eor_quantity">Кількість бутилів</string>
+	<string name="eor_price">Вартість 1 бутиля</string>
+	<string name="eor_bottletype">Тип бутиля</string>
+	<string name="eor_cooler">Кулер</string>
 	<string name="eor_phone">Телефон</string>
+	<string name="eor_contact">Контактна особа</string>
+	<string name="eor_phone1">Телефон</string>
+	<string name="eor_contact1">Контактна особи</string>
+	<string name="eor_comment">Примітки</string>
+	<string name="eor_firstorderdate">Дата першого замовлення</string>
+	<string name="eor_lastorderdate">Дата останнього замовлення</string>
+	<string name="eor_type">Тип клієнта</string>
+	<string name="eor_customid">ID-клієнта</string>
+	<string name="eor_changed">Востаннє змінено:</string>
 	<string name="eor_ok">OK</string>
 	<string name="eor_cancel">Відміна</string>
 </resources>

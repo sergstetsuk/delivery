@@ -64,7 +64,7 @@ public class ClientsEditFragment extends DialogFragment {
 	SQLHandler mDbHandler = new SQLHandler(getContext());
 
 	if(clientid != null) {
-		Cursor mCursor = mDbHandler.selectQuery("SELECT c.* FROM clients c WHERE id=" + clientid + ";");
+		Cursor mCursor = mDbHandler.selectQuery("SELECT c.*, datetime(c.changed,'localtime') as localchanged FROM clients c WHERE id=" + clientid + ";");
 		mCursor.moveToFirst();
 		Name.setText(mCursor.getString(mCursor.getColumnIndex("c.name")));
 		Cat.setSelection(((ArrayAdapter) Cat.getAdapter()).getPosition(mCursor.getString(mCursor.getColumnIndex("c.cat"))));
@@ -86,7 +86,7 @@ public class ClientsEditFragment extends DialogFragment {
 		Type.setText(mCursor.getString(mCursor.getColumnIndex("c.type")));
 		CustomId.setText(mCursor.getString(mCursor.getColumnIndex("c.customid")));
 		Changed.setText(getActivity().getResources().getString(R.string.ecl_changed)
-			+ mCursor.getString(mCursor.getColumnIndex("c.changed")));
+			+ mCursor.getString(mCursor.getColumnIndex("localchanged")));
 			/*todo: timestamp is in UTC+0, must be +2 or regional shift*/
 		mCursor.close();
         }
