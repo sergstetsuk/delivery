@@ -143,27 +143,35 @@
 		android:layout_below="@+id/eor_contact1"
 		android:singleLine="true"
 		android:hint="@string/eor_comment" />
-	<TextView
-		android:id="@+id/eor_firstorderdate"
+	<EditText
+		android:id="@+id/eor_ordertimestamp"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_comment"
-		android:hint="@string/eor_firstorderdate"
+		android:hint="@string/eor_ordertimestamp"
 		android:singleLine="true"
 		android:inputType="date"/>
-	<TextView
-		android:id="@+id/eor_lastorderdate"
+	<Spinner
+		android:id="@+id/eor_result"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/eor_firstorderdate"
-		android:hint="@string/eor_lastorderdate"
+		android:layout_below="@+id/eor_ordertimestamp"
+		android:hint="@string/eor_result"
 		android:singleLine="true"
-		android:inputType="date" />
+		android:entries="@array/ResultTypes" />
+	<TextView
+		android:id="@+id/eor_completetimestamp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_result"
+		android:hint="@string/eor_completetimestamp"
+		android:singleLine="true"
+		android:inputType="datetime" />
 	<TextView
 		android:id="@+id/eor_type"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/eor_lastorderdate"
+		android:layout_below="@+id/eor_completetimestamp"
 		android:singleLine="true"
 		android:hint="@string/eor_type" />
 	<TextView

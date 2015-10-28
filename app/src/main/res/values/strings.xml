@@ -16,6 +16,11 @@
 		<item>@string/ecl_name</item>
 	</string-array>
 
+	<string-array name="OrderSortModes">
+		<item>@string/eor_addr</item>
+		<item>@string/eor_name</item>
+	</string-array>
+
 	<string-array name="StreetCategories">
 		<item>вул.</item>
 		<item>пров.</item>
@@ -29,6 +34,12 @@
 	<string-array name="BottleTypes">
 		<item>осмос</item>
 		<item>мінерал</item>
+	</string-array>
+
+	<string-array name="ResultTypes">
+		<item>Невідомо</item>
+		<item>Доставлено</item>
+		<item>Відмова</item>
 	</string-array>
 
 	<string name="ecl_header">Картка клієнта</string>
@@ -71,8 +82,9 @@
 	<string name="eor_phone1">Телефон</string>
 	<string name="eor_contact1">Контактна особа</string>
 	<string name="eor_comment">Примітки</string>
-	<string name="eor_firstorderdate">Дата першого замовлення</string>
-	<string name="eor_lastorderdate">Дата останнього замовлення</string>
+	<string name="eor_ordertimestamp">Дата першого замовлення</string>
+	<string name="eor_result">Результат</string>
+	<string name="eor_completetimestamp">Дата останнього замовлення</string>
 	<string name="eor_type">Тип клієнта</string>
 	<string name="eor_customid">ID-клієнта</string>
 	<string name="eor_changed">Востаннє змінено:</string>

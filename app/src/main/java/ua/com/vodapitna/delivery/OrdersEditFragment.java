@@ -52,8 +52,9 @@ public class OrdersEditFragment extends DialogFragment {
 	final EditText Phone1 = (EditText) customDialogView.findViewById(R.id.eor_phone1);
 	final EditText Contact1 = (EditText) customDialogView.findViewById(R.id.eor_contact1);
 	final EditText Comment = (EditText) customDialogView.findViewById(R.id.eor_comment);
-	final TextView FirstOrderDate = (TextView) customDialogView.findViewById(R.id.eor_firstorderdate);
-	final TextView LastOrderDate = (TextView) customDialogView.findViewById(R.id.eor_lastorderdate);
+	final EditText OrderTimeStamp = (EditText) customDialogView.findViewById(R.id.eor_ordertimestamp);
+	final Spinner Result = (Spinner) customDialogView.findViewById(R.id.eor_result);
+	final TextView CompleteTimeStamp = (TextView) customDialogView.findViewById(R.id.eor_completetimestamp);
 	final TextView Type = (TextView) customDialogView.findViewById(R.id.eor_type);
 	final TextView CustomId = (TextView) customDialogView.findViewById(R.id.eor_customid);
 	final TextView Changed = (TextView) customDialogView.findViewById(R.id.eor_changed);
@@ -82,8 +83,8 @@ public class OrdersEditFragment extends DialogFragment {
 		Phone1.setText(mCursor.getString(mCursor.getColumnIndex("c.phone1")));
 		Contact1.setText(mCursor.getString(mCursor.getColumnIndex("c.contact1")));
 		Comment.setText(mCursor.getString(mCursor.getColumnIndex("c.comment")));
-		FirstOrderDate.setText(mCursor.getString(mCursor.getColumnIndex("c.firstorderdate")));
-		LastOrderDate.setText(mCursor.getString(mCursor.getColumnIndex("c.lastorderdate")));
+		//OrderTimeStamp.setText(mCursor.getString(mCursor.getColumnIndex("c.firstorderdate")));
+		//CompleteTimeStamp.setText(mCursor.getString(mCursor.getColumnIndex("c.lastorderdate")));
 		Type.setText(mCursor.getString(mCursor.getColumnIndex("c.type")));
 		CustomId.setText(mCursor.getString(mCursor.getColumnIndex("c.customid")));
 		Changed.setText(getActivity().getResources().getString(R.string.eor_changed)
@@ -112,20 +113,21 @@ public class OrdersEditFragment extends DialogFragment {
 					+ ",phone1='" + Phone1.getText() + "'"
 					+ ",contact1='" + Contact1.getText() + "'"
 					+ ",comment='" + Comment.getText() + "'"
-					+ ",firstorderdate='" + FirstOrderDate.getText() + "'"
-					+ ",lastorderdate='" + LastOrderDate.getText() + "'"
-					+ ",type='" + Type.getText() + "'"
-					+ ",customid='" + CustomId.getText() + "'"
-					+ ",changed=CURRENT_TIMESTAMP"
-					+ " WHERE id='"+clientid+"';";
+					+ ",ordertimestamp='" + OrderTimeStamp.getText() + "'"
+					+ ",result='" + Result.getSelectedItem() + "'"
+					//+ ",completetimestamp=CURRENT_TIMESTAMP"
+					//+ ",type='" + Type.getText() + "'"
+					//+ ",customid='" + CustomId.getText() + "'"
+					//+ ",changed=CURRENT_TIMESTAMP"
+					+ " WHERE id='"+orderid+"';";
 				mDbHandler.executeQuery(query);
 				Log.d("vodapitna.SQLWATCH",query);
 			} else {
 				SQLHandler mDbHandler = new SQLHandler(getContext());
 				String query = "INSERT INTO orders (name, cat, addr, house, office, floor,"
 					+" quantity, price, bottletype, cooler, phone, contact,"
-					+" phone1, contact1, comment, firstorderdate, lastorderdate, type,"
-					+" customid, changed)"
+					+" phone1, contact1, comment, ordertimestamp, result, completetimestamp,"
+					+" type, customid, changed)"
 					+" VALUES ("
 					+"'"+Name.getText()+"'"
 					+",'"+Cat.getSelectedItem()+"'"
@@ -142,8 +144,9 @@ public class OrdersEditFragment extends DialogFragment {
 					+",'"+Phone1.getText()+"'"
 					+",'"+Contact1.getText()+"'"
 					+",'"+Comment.getText()+"'"
-					+",'"+FirstOrderDate.getText()+"'"
-					+",'"+LastOrderDate.getText()+"'"
+					+",'"+OrderTimeStamp.getText()+"'"
+					+",'"+Result.getSelectedItem()+"'"
+					+",CURRENT_TIMESTAMP"
 					+",'"+Type.getText()+"'"
 					+",'"+CustomId.getText()+"'"
 					+",CURRENT_TIMESTAMP"
@@ -151,9 +154,9 @@ public class OrdersEditFragment extends DialogFragment {
 				mDbHandler.executeQuery(query);
 				Log.d("vodapitna.SQLWATCH",query);
 			}
-			//ListView lv = (ListView) getActivity().findViewById(R.id.lvContactList);
-			//OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
-			//ad.notifyDataSetChanged();
+			ListView lv = (ListView) getActivity().findViewById(R.id.lvOrdersList);
+			OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
+			ad.notifyDataSetChanged();
 			dismiss();
 		}
 	});

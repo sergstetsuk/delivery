@@ -150,7 +150,7 @@ public class ClientsEditFragment extends DialogFragment {
 				mDbHandler.executeQuery(query);
 				Log.d("vodapitna.SQLWATCH",query);
 			}
-			ListView lv = (ListView) getActivity().findViewById(R.id.lvContactList);
+			ListView lv = (ListView) getActivity().findViewById(R.id.lvClientsList);
 			ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
 			ad.notifyDataSetChanged();
 			dismiss();
