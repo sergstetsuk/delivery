@@ -33,15 +33,16 @@ public class OrdersAdapter extends BaseAdapter {
 	@Override
 	public void notifyDataSetChanged() {
 		String Sort = "ORDER BY o.name ASC";
-		String Filter = "WHERE fulfiltimestamp == null";
+		String Filter = "WHERE result == " + "'Невідомо'"; //todo: get from array of ResultTypes index[0]
 		Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svOrdersSortMode);
 		if(sortselect==null || sortselect.getSelectedItemId()==0) {
 			Sort = "ORDER BY o.addr ASC";
 		}
+		//todo: when checkbox is checked - show all items
 		//CheckBox hiddencheckbox = (CheckBox) mActivity.findViewById(R.id.svOrdersSortMode);
 
-		//~ mCursor = mDbHandler.selectQuery("SELECT o.* FROM orders o " + Filter + " " + Sort + ";");
-		mCursor = mDbHandler.selectQuery("SELECT o.* FROM orders o;");
+		mCursor = mDbHandler.selectQuery("SELECT o.* FROM orders o " + Filter + " " + Sort + ";");
+		//~ mCursor = mDbHandler.selectQuery("SELECT o.* FROM orders o;");
 		super.notifyDataSetChanged();
 	}
 
@@ -71,6 +72,7 @@ public class OrdersAdapter extends BaseAdapter {
 		final TextView telephone = (TextView) vi.findViewById(R.id.telephone);
 		final long id = getItemId(position);
 		ImageButton btCall = (ImageButton) vi.findViewById(R.id.callButton);
+		/*todo: background color on result status*/
 
 		//click listener for CALL action
 		final View.OnClickListener makeCallListener = new View.OnClickListener() {
