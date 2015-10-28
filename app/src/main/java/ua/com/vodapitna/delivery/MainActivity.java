@@ -29,13 +29,13 @@ public class MainActivity extends FragmentActivity {
             switch (pos) {
 
                 case 0:
-                    return ClientsFragment.newInstance("Clients");
+                    return ClientsFragment.newInstance(getResources().getString(R.string.FragmentClients));
                 case 1:
-                    return OrdersFragment.newInstance("Orders");
+                    return OrdersFragment.newInstance(getResources().getString(R.string.FragmentOrders));
                 case 2:
-                    return FuelFragment.newInstance("Fuel");
+                    return FuelFragment.newInstance(getResources().getString(R.string.FragmentFuel));
                 case 3:
-                    return StatisticsFragment.newInstance("Statistics");
+                    return StatisticsFragment.newInstance(getResources().getString(R.string.FragmentStatistics));
                 default:
                     return null;
             }

@@ -87,7 +87,6 @@ public class ClientsEditFragment extends DialogFragment {
 		CustomId.setText(mCursor.getString(mCursor.getColumnIndex("c.customid")));
 		Changed.setText(getActivity().getResources().getString(R.string.ecl_changed)
 			+ mCursor.getString(mCursor.getColumnIndex("localchanged")));
-			/*todo: timestamp is in UTC+0, must be +2 or regional shift*/
 		mCursor.close();
         }
 

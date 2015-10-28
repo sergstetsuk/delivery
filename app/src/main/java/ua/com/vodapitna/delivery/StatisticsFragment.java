@@ -22,9 +22,9 @@ public class StatisticsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fuel_fragment, container, false);
+        View v = inflater.inflate(R.layout.statistics_fragment, container, false);
 
-        TextView tv = (TextView) v.findViewById(R.id.tvFragThird);
+        TextView tv = (TextView) v.findViewById(R.id.tvFragFourth);
         tv.setText(getArguments().getString("msg"));
 
         return v;

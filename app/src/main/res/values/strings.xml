@@ -2,6 +2,11 @@
 	<string name="app_name">Delivery</string>
 	<string name="action_settings">Налаштування</string>
 
+	<string name="FragmentClients">Клієнти</string>
+	<string name="FragmentOrders">Замовлення</string>
+	<string name="FragmentFuel">Пальне</string>
+	<string name="FragmentStatistics">Статистика</string>
+
 	<string name="addContactButtonLabel">Додати</string>
 	<string name="searchContactButtonLabel">Пошук</string>
 	<string name="showInvisible">Показати приховані</string>
@@ -40,7 +45,7 @@
 	<string name="ecl_phone">Телефон</string>
 	<string name="ecl_contact">Контактна особа</string>
 	<string name="ecl_phone1">Телефон</string>
-	<string name="ecl_contact1">Контактна особи</string>
+	<string name="ecl_contact1">Контактна особа</string>
 	<string name="ecl_comment">Примітки</string>
 	<string name="ecl_firstorderdate">Дата першого замовлення</string>
 	<string name="ecl_lastorderdate">Дата останнього замовлення</string>
@@ -64,7 +69,7 @@
 	<string name="eor_phone">Телефон</string>
 	<string name="eor_contact">Контактна особа</string>
 	<string name="eor_phone1">Телефон</string>
-	<string name="eor_contact1">Контактна особи</string>
+	<string name="eor_contact1">Контактна особа</string>
 	<string name="eor_comment">Примітки</string>
 	<string name="eor_firstorderdate">Дата першого замовлення</string>
 	<string name="eor_lastorderdate">Дата останнього замовлення</string>

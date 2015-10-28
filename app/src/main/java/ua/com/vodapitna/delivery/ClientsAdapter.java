@@ -32,7 +32,6 @@ public class ClientsAdapter extends BaseAdapter {
 
     @Override
     public void notifyDataSetChanged() {
-        //mCursor = mDbHandler.selectQuery("SELECT * FROM clients;");
         Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svClientsSortMode);
         if(sortselect==null || sortselect.getSelectedItemId()==0) {
             mCursor = mDbHandler.selectQuery("SELECT c.* FROM clients c ORDER BY c.addr ASC;");
@@ -66,6 +65,7 @@ public class ClientsAdapter extends BaseAdapter {
         TextView name = (TextView) vi.findViewById(R.id.name); // name
         final TextView address = (TextView) vi.findViewById(R.id.address);
         final TextView telephone = (TextView) vi.findViewById(R.id.telephone);
+	final long id = getItemId(position);
         ImageButton btCall = (ImageButton) vi.findViewById(R.id.callButton);
 
         //click listener for CALL action
@@ -87,7 +87,7 @@ public class ClientsAdapter extends BaseAdapter {
             public void onClick(View v) {
                 OrdersEditFragment orderseditdialog = new OrdersEditFragment();
                 Bundle b = new Bundle();
-                b.putString("id", null);
+                b.putString("clientid", String.valueOf(id));
                 orderseditdialog.setArguments(b);
                 orderseditdialog.show(mActivity.getSupportFragmentManager(), null);
             }

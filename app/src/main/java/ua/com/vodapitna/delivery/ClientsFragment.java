@@ -42,8 +42,6 @@ public class ClientsFragment extends Fragment {
                 b.putString("clientid", String.valueOf(id));
                 clienteditdialog.setArguments(b);
                 clienteditdialog.show(getFragmentManager(), null);
-                //~ ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
-                //~ ad.notifyDataSetChanged();
             }
         });
         spinOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

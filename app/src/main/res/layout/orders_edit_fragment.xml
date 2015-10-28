@@ -1,93 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_dark"
-    android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp" >
-
-        <TextView
-            android:id="@+id/eor_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/eor_header"
-            android:textSize="26dp" />
-
-        <TextView
-            android:id="@+id/eor_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eor_header"
-            android:ems="10"
-            android:hint="@string/eor_name"
-            android:nextFocusDown="@+id/eor_cat"
-            android:singleLine="true" />
-
-        <Spinner
-            android:id="@+id/eor_cat"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eor_name"
-            android:hint="@string/eor_cat"
-            android:nextFocusDown="@+id/eor_addr"
-            android:singleLine="true" />
-
-        <EditText
-            android:id="@+id/eor_addr"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eor_cat"
-            android:hint="@string/eor_addr"
-            android:singleLine="true" />
-        <EditText
-            android:id="@+id/eor_house"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eor_addr"
-            android:hint="@string/eor_house"
-            android:singleLine="true" />
-        <EditText
-            android:id="@+id/eor_office"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eor_house"
-            android:hint="@string/eor_office"
-            android:singleLine="true" />
-        <EditText
-            android:id="@+id/eor_phone"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eor_office"
-            android:hint="@string/eor_phone"
-            android:singleLine="false"
-            android:inputType="phone"/>
-
-        <LinearLayout
-            android:id="@+id/layout_submit"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/eor_phone"
-            android:layout_margin="5dp"
-            android:orientation="horizontal"
-            android:weightSum="2" >
-
-            <Button
-                android:id="@+id/button_ok"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/eor_ok" />
-
-            <Button
-                android:id="@+id/button_cancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/eor_cancel" />
-        </LinearLayout>
-    </RelativeLayout>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/holo_green_dark"
+	android:orientation="vertical">
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+<RelativeLayout
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_margin="5dp" >
+	<TextView
+		android:id="@+id/eor_header"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:text="@string/eor_header"
+		android:textSize="26dp" />
+	<TextView
+		android:id="@+id/eor_name"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_header"
+		android:ems="10"
+		android:hint="@string/eor_name"
+		android:nextFocusDown="@+id/eor_cat"
+		android:singleLine="true"
+		android:inputType="textCapWords" />
+	<Spinner
+		android:id="@+id/eor_cat"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_name"
+		android:hint="@string/eor_cat"
+		android:nextFocusDown="@+id/eor_addr"
+		android:singleLine="true"
+		android:entries="@array/StreetCategories" />
+	<EditText
+		android:id="@+id/eor_addr"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_cat"
+		android:hint="@string/eor_addr"
+		android:singleLine="true"
+		android:inputType="textCapWords" />
+	<EditText
+		android:id="@+id/eor_house"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_addr"
+		android:hint="@string/eor_house"
+		android:inputType="number"
+		android:digits="0123456789абвгдеєжзиіїклмнопрстуфхцчшщюя"
+		android:singleLine="true" />
+	<EditText
+		android:id="@+id/eor_office"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_house"
+		android:hint="@string/eor_office"
+		android:singleLine="true"
+		android:inputType="number" />
+	<EditText
+		android:id="@+id/eor_floor"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_office"
+		android:hint="@string/eor_floor"
+		android:singleLine="true"
+		android:inputType="number"/>
+	<EditText
+		android:id="@+id/eor_quantity"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_floor"
+		android:hint="@string/eor_quantity"
+		android:singleLine="true"
+		android:inputType="number"/>
+	<EditText
+		android:id="@+id/eor_price"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_quantity"
+		android:hint="@string/eor_price"
+		android:singleLine="true"
+		android:inputType="numberDecimal"/>
+	<Spinner
+		android:id="@+id/eor_bottletype"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_price"
+		android:hint="@string/eor_bottletype"
+		android:singleLine="true"
+		android:entries="@array/BottleTypes" />
+	<EditText
+		android:id="@+id/eor_cooler"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_bottletype"
+		android:hint="@string/eor_cooler"
+		android:singleLine="true"
+		android:inputType="text"/>
+	<EditText
+		android:id="@+id/eor_phone"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_cooler"
+		android:hint="@string/eor_phone"
+		android:singleLine="true"
+		android:inputType="phone"/>
+	<EditText
+		android:id="@+id/eor_contact"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_phone"
+		android:hint="@string/eor_contact"
+		android:singleLine="true"
+		android:inputType="textCapWords"/>
+	<EditText
+		android:id="@+id/eor_phone1"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_contact"
+		android:hint="@string/eor_phone1"
+		android:singleLine="true"
+		android:inputType="phone"/>
+	<EditText
+		android:id="@+id/eor_contact1"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_phone1"
+		android:hint="@string/eor_contact1"
+		android:singleLine="true"
+		android:inputType="textCapWords" />
+	<EditText
+		android:id="@+id/eor_comment"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_contact1"
+		android:singleLine="true"
+		android:hint="@string/eor_comment" />
+	<TextView
+		android:id="@+id/eor_firstorderdate"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_comment"
+		android:hint="@string/eor_firstorderdate"
+		android:singleLine="true"
+		android:inputType="date"/>
+	<TextView
+		android:id="@+id/eor_lastorderdate"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_firstorderdate"
+		android:hint="@string/eor_lastorderdate"
+		android:singleLine="true"
+		android:inputType="date" />
+	<TextView
+		android:id="@+id/eor_type"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_lastorderdate"
+		android:singleLine="true"
+		android:hint="@string/eor_type" />
+	<TextView
+		android:id="@+id/eor_customid"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_type"
+		android:hint="@string/eor_customid"
+		android:singleLine="true"
+		android:inputType="number" />
+	<TextView
+		android:id="@+id/eor_changed"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_customid"
+		android:text="@string/eor_changed"
+		android:textSize="10dp" />
+<LinearLayout
+	android:id="@+id/layout_submit"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_below="@id/eor_changed"
+	android:layout_margin="5dp"
+	android:orientation="horizontal"
+	android:weightSum="2" >
+	<Button
+		android:id="@+id/button_ok"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:text="@string/eor_ok" />
+	<Button
+		android:id="@+id/button_cancel"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:text="@string/eor_cancel" />
+</LinearLayout>
+</RelativeLayout>
+</ScrollView>
 </LinearLayout>
