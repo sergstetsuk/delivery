@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Spinner;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 public class OrdersFragment extends Fragment {
 
@@ -28,6 +30,7 @@ public class OrdersFragment extends Fragment {
         Spinner spinOrder = (Spinner) v.findViewById(R.id.svOrdersSortMode);
         Button btadd = (Button) v.findViewById(R.id.btAddContactButton);
         Button btsearch = (Button) v.findViewById(R.id.btSearchContactButton);
+	CheckBox showinvisible = (CheckBox) v.findViewById(R.id.cbShowInvisibleOrders);
         OrdersAdapter adapter = new OrdersAdapter(getActivity());
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,19 +71,26 @@ public class OrdersFragment extends Fragment {
             }
         });
 
+	showinvisible.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener(){
+		@Override
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+			OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
+			ad.notifyDataSetChanged();
+		}
+	});
         btsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //~ SQLHandler mDbHandler = new SQLHandler(getContext());
-                //~ mDbHandler.executeQuery("DELETE FROM Orders;");
+                SQLHandler mDbHandler = new SQLHandler(getContext());
+                mDbHandler.executeQuery("DELETE FROM Orders;");
 
                 /*OrdersEditFragment clienteditdialog = new OrdersEditFragment();
                 Bundle b = new Bundle();
                 b.putString("clientid","2");
                 clienteditdialog.setArguments(b);
                 clienteditdialog.show(getFragmentManager(),null);*/
-                //OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
-                //ad.notifyDataSetChanged();
+                OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
             }
         });
 

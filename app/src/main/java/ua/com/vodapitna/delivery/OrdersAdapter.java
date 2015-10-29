@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Spinner;
+import android.widget.CheckBox;
 import android.util.Log;
 
 
@@ -35,14 +36,14 @@ public class OrdersAdapter extends BaseAdapter {
 		String Sort = "ORDER BY o.name ASC";
 		String Filter = "WHERE result == " + "'Невідомо'"; //todo: get from array of ResultTypes index[0]
 		Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svOrdersSortMode);
-		if(sortselect==null || sortselect.getSelectedItemId()==0) {
+		if (sortselect==null || sortselect.getSelectedItemId()==0) {
 			Sort = "ORDER BY o.addr ASC";
 		}
-		//todo: when checkbox is checked - show all items
-		//CheckBox hiddencheckbox = (CheckBox) mActivity.findViewById(R.id.svOrdersSortMode);
-
+		CheckBox showinvisible = (CheckBox) mActivity.findViewById(R.id.cbShowInvisibleOrders);
+		if (showinvisible!=null && showinvisible.isChecked()) {
+			Filter = "";
+		}
 		mCursor = mDbHandler.selectQuery("SELECT o.* FROM orders o " + Filter + " " + Sort + ";");
-		//~ mCursor = mDbHandler.selectQuery("SELECT o.* FROM orders o;");
 		super.notifyDataSetChanged();
 	}
 
