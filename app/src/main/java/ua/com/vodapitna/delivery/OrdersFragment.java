@@ -42,18 +42,18 @@ public class OrdersFragment extends Fragment {
                 clienteditdialog.show(getFragmentManager(), null);
             }
         });
-        //~ spinOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            //~ @Override
-            //~ public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //~ OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
-                //~ ad.notifyDataSetChanged();
-            //~ }
-            //@Override
-            //~ public void onNothingSelected(AdapterView<?> parent) {
-                //~ OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
-                //~ ad.notifyDataSetChanged();
-            //~ }
-        //~ });
+        spinOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+            }
+            //~ //@Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                OrdersAdapter ad = (OrdersAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+            }
+        });
         btadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

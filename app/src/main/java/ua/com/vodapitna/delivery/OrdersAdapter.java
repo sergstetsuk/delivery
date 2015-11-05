@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Spinner;
 import android.widget.CheckBox;
 import android.util.Log;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 
 public class OrdersAdapter extends BaseAdapter {
@@ -33,11 +35,15 @@ public class OrdersAdapter extends BaseAdapter {
 
 	@Override
 	public void notifyDataSetChanged() {
-		String Sort = "ORDER BY o.name ASC";
-		String Filter = "WHERE result == " + "'Невідомо'"; //todo: get from array of ResultTypes index[0]
+		String Sort = "ORDER BY o.result ASC, o.ordertimestamp ASC";
+		String Filter = "WHERE result == " //+ "'В процесі'";
+			+ "'" + mActivity.getResources().getStringArray(R.array.ResultTypes)[0] + "'"; //todo: get from array of ResultTypes index[0]
 		Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svOrdersSortMode);
-		if (sortselect==null || sortselect.getSelectedItemId()==0) {
-			Sort = "ORDER BY o.addr ASC";
+		if (sortselect!=null) {
+			if (sortselect.getSelectedItemId() == 1)
+				Sort = "ORDER BY o.result ASC, o.addr ASC";
+			else if (sortselect.getSelectedItemId() == 2)
+				Sort = "ORDER BY o.result ASC, o.name ASC";
 		}
 		CheckBox showinvisible = (CheckBox) mActivity.findViewById(R.id.cbShowInvisibleOrders);
 		if (showinvisible!=null && showinvisible.isChecked()) {
@@ -73,7 +79,25 @@ public class OrdersAdapter extends BaseAdapter {
 		final TextView telephone = (TextView) vi.findViewById(R.id.telephone);
 		final long id = getItemId(position);
 		ImageButton btCall = (ImageButton) vi.findViewById(R.id.callButton);
-		/*todo: background color on result status*/
+		/*todo: background color on result status
+		* result_id not 0 - red
+		* date is today - green
+		* date is yesterday - red
+		* date is tomorrow - gray*/
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat df = new SimpleDateFormat("yyy.MM.dd");
+		String today = df.format(cal.getTime());
+		cal.add(cal.DATE,1);
+		String tomorrow = df.format(cal.getTime());
+		Log.d("DATE_FORMAT today",today);
+		Log.d("DATE_FORMAT tomorrow",tomorrow);
+		vi.setBackgroundColor(0xFF80FF80);
+		if (mCursor.getString(mCursor.getColumnIndex("o.ordertimestamp")).compareTo(today) < 0)
+			vi.setBackgroundColor(0xFFFF8080);
+		if (mCursor.getString(mCursor.getColumnIndex("o.ordertimestamp")).compareTo(tomorrow) >= 0)
+			vi.setBackgroundColor(0xFF80FFFF);
+		if (mCursor.getString(mCursor.getColumnIndex("o.result")).compareTo(mActivity.getResources().getStringArray(R.array.ResultTypes)[0]) != 0)
+			vi.setBackgroundColor(0xFF808080);
 
 		//click listener for CALL action
 		final View.OnClickListener makeCallListener = new View.OnClickListener() {

@@ -17,6 +17,7 @@
 	</string-array>
 
 	<string-array name="OrderSortModes">
+		<item>@string/eor_ordertimestamp</item>
 		<item>@string/eor_addr</item>
 		<item>@string/eor_name</item>
 	</string-array>
@@ -32,12 +33,12 @@
 	</string-array>
 
 	<string-array name="BottleTypes">
-		<item>осмос</item>
 		<item>мінерал</item>
+		<item>осмос</item>
 	</string-array>
 
 	<string-array name="ResultTypes">
-		<item>Невідомо</item>
+		<item>В процесі</item>
 		<item>Доставлено</item>
 		<item>Відмова</item>
 	</string-array>
@@ -82,9 +83,9 @@
 	<string name="eor_phone1">Телефон</string>
 	<string name="eor_contact1">Контактна особа</string>
 	<string name="eor_comment">Примітки</string>
-	<string name="eor_ordertimestamp">Дата першого замовлення</string>
+	<string name="eor_ordertimestamp">Бажана дата доставки</string>
 	<string name="eor_result">Результат</string>
-	<string name="eor_completetimestamp">Дата останнього замовлення</string>
+	<string name="eor_completetimestamp">Дата виконання замовлення</string>
 	<string name="eor_type">Тип клієнта</string>
 	<string name="eor_customid">ID-клієнта</string>
 	<string name="eor_changed">Востаннє змінено:</string>
