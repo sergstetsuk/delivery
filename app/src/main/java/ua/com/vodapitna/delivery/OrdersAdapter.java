@@ -64,7 +64,7 @@ public class OrdersAdapter extends BaseAdapter {
 	public long getItemId(int position)
 	{
 		mCursor.moveToPosition(position);
-		long index = mCursor.getLong(mCursor.getColumnIndex("o.id"));
+		long index = mCursor.getLong(mCursor.getColumnIndex("id"));
 		return index;
 	}
 
@@ -126,12 +126,12 @@ public class OrdersAdapter extends BaseAdapter {
 
 		btAddOrder.setOnClickListener(addOrderListener);
 
-		name.setText(mCursor.getString(mCursor.getColumnIndex("o.name")));
-		address.setText(mCursor.getString(mCursor.getColumnIndex("o.cat"))+
-			" "+mCursor.getString(mCursor.getColumnIndex("o.addr"))+
-			", "+mCursor.getString(mCursor.getColumnIndex("o.house"))+
-			"/"+mCursor.getString(mCursor.getColumnIndex("o.office")));
-		telephone.setText(mCursor.getString(mCursor.getColumnIndex("o.phone")));
+		name.setText(mCursor.getString(mCursor.getColumnIndex("name")));
+		address.setText(mCursor.getString(mCursor.getColumnIndex("cat"))+
+			" "+mCursor.getString(mCursor.getColumnIndex("addr"))+
+			", "+mCursor.getString(mCursor.getColumnIndex("house"))+
+			"/"+mCursor.getString(mCursor.getColumnIndex("office")));
+		telephone.setText(mCursor.getString(mCursor.getColumnIndex("phone")));
 		/*todo: need to check phone1 and show*/
 		return vi;
 	}

@@ -18,6 +18,9 @@ import android.widget.TextView;
 import android.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.SimpleCursorAdapter.CursorToStringConverter;
+import android.widget.FilterQueryProvider;
 
 /**
  * Created by sergal on 06.10.15.
@@ -39,7 +42,7 @@ public class ClientsEditFragment extends DialogFragment {
 
 	final EditText Name = (EditText) customDialogView.findViewById(R.id.ecl_name);
 	final Spinner Cat = (Spinner) customDialogView.findViewById(R.id.ecl_cat);
-	final EditText Addr = (EditText) customDialogView.findViewById(R.id.ecl_addr);
+	final AutoCompleteTextView Addr = (AutoCompleteTextView) customDialogView.findViewById(R.id.ecl_addr);
 	final EditText House = (EditText) customDialogView.findViewById(R.id.ecl_house);
 	final EditText Office = (EditText) customDialogView.findViewById(R.id.ecl_office);
 	final EditText Floor = (EditText) customDialogView.findViewById(R.id.ecl_floor);
@@ -61,30 +64,50 @@ public class ClientsEditFragment extends DialogFragment {
 	Button clientCancelButton = (Button) customDialogView.findViewById(R.id.button_cancel);
 
 	final String clientid = getArguments().getString("clientid");
-	SQLHandler mDbHandler = new SQLHandler(getContext());
+	final SQLHandler mDbHandler = new SQLHandler(getContext());
 
+	SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(),android.R.layout.simple_list_item_1,
+			null,new String[] {"addr"},new int[] {android.R.id.text1},0);
+
+	adapter.setFilterQueryProvider(new FilterQueryProvider() {
+		@Override
+		public Cursor runQuery(CharSequence str) {
+			Cursor mCursor1 = mDbHandler.selectQuery("SELECT id as _id, addr FROM clients"
+				+ " WHERE addr LIKE '" + str +"%' GROUP BY addr;");
+			return mCursor1;
+		}
+	});
+
+	adapter.setCursorToStringConverter(new CursorToStringConverter() {
+		@Override
+		public CharSequence convertToString(Cursor cur) {
+		int index = cur.getColumnIndex("addr");
+		return cur.getString(index);
+	}});
+
+	Addr.setAdapter(adapter);
 	if(clientid != null) {
 		Cursor mCursor = mDbHandler.selectQuery("SELECT c.*, datetime(c.changed,'localtime') as localchanged FROM clients c WHERE id=" + clientid + ";");
 		mCursor.moveToFirst();
-		Name.setText(mCursor.getString(mCursor.getColumnIndex("c.name")));
+		Name.setText(mCursor.getString(mCursor.getColumnIndex("name")));
 		Cat.setSelection(((ArrayAdapter) Cat.getAdapter()).getPosition(mCursor.getString(mCursor.getColumnIndex("c.cat"))));
-		Addr.setText(mCursor.getString(mCursor.getColumnIndex("c.addr")));
-		House.setText(mCursor.getString(mCursor.getColumnIndex("c.house")));
-		Office.setText(mCursor.getString(mCursor.getColumnIndex("c.office")));
-		Floor.setText(mCursor.getString(mCursor.getColumnIndex("c.floor")));
-		Quantity.setText(mCursor.getString(mCursor.getColumnIndex("c.quantity")));
-		Price.setText(mCursor.getString(mCursor.getColumnIndex("c.price")));
+		Addr.setText(mCursor.getString(mCursor.getColumnIndex("addr")));
+		House.setText(mCursor.getString(mCursor.getColumnIndex("house")));
+		Office.setText(mCursor.getString(mCursor.getColumnIndex("office")));
+		Floor.setText(mCursor.getString(mCursor.getColumnIndex("floor")));
+		Quantity.setText(mCursor.getString(mCursor.getColumnIndex("quantity")));
+		Price.setText(mCursor.getString(mCursor.getColumnIndex("price")));
 		BottleType.setSelection(((ArrayAdapter) BottleType.getAdapter()).getPosition(mCursor.getString(mCursor.getColumnIndex("c.bottletype"))));
-		Cooler.setText(mCursor.getString(mCursor.getColumnIndex("c.cooler")));
-		Phone.setText(mCursor.getString(mCursor.getColumnIndex("c.phone")));
-		Contact.setText(mCursor.getString(mCursor.getColumnIndex("c.contact")));
-		Phone1.setText(mCursor.getString(mCursor.getColumnIndex("c.phone1")));
-		Contact1.setText(mCursor.getString(mCursor.getColumnIndex("c.contact1")));
-		Comment.setText(mCursor.getString(mCursor.getColumnIndex("c.comment")));
-		FirstOrderDate.setText(mCursor.getString(mCursor.getColumnIndex("c.firstorderdate")));
-		LastOrderDate.setText(mCursor.getString(mCursor.getColumnIndex("c.lastorderdate")));
-		Type.setText(mCursor.getString(mCursor.getColumnIndex("c.type")));
-		CustomId.setText(mCursor.getString(mCursor.getColumnIndex("c.customid")));
+		Cooler.setText(mCursor.getString(mCursor.getColumnIndex("cooler")));
+		Phone.setText(mCursor.getString(mCursor.getColumnIndex("phone")));
+		Contact.setText(mCursor.getString(mCursor.getColumnIndex("contact")));
+		Phone1.setText(mCursor.getString(mCursor.getColumnIndex("phone1")));
+		Contact1.setText(mCursor.getString(mCursor.getColumnIndex("contact1")));
+		Comment.setText(mCursor.getString(mCursor.getColumnIndex("comment")));
+		FirstOrderDate.setText(mCursor.getString(mCursor.getColumnIndex("firstorderdate")));
+		LastOrderDate.setText(mCursor.getString(mCursor.getColumnIndex("lastorderdate")));
+		Type.setText(mCursor.getString(mCursor.getColumnIndex("type")));
+		CustomId.setText(mCursor.getString(mCursor.getColumnIndex("customid")));
 		Changed.setText(getActivity().getResources().getString(R.string.ecl_changed)
 			+ mCursor.getString(mCursor.getColumnIndex("localchanged")));
 		mCursor.close();

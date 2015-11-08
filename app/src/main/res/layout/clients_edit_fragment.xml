@@ -39,14 +39,16 @@
 		android:nextFocusDown="@+id/ecl_addr"
 		android:singleLine="true"
 		android:entries="@array/StreetCategories" />
-	<EditText
+	<AutoCompleteTextView
 		android:id="@+id/ecl_addr"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/ecl_cat"
 		android:hint="@string/ecl_addr"
 		android:singleLine="true"
-		android:inputType="textCapWords" />
+		android:inputType="textCapWords"
+		android:completionThreshold="2"
+		android:imeOptions="actionNext" />
 	<EditText
 		android:id="@+id/ecl_house"
 		android:layout_width="fill_parent"

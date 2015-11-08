@@ -16,6 +16,13 @@
 		<item>@string/ecl_name</item>
 	</string-array>
 
+	<string-array name="list_of_countries">
+		<item>Повстанська</item>
+		<item>Повітряна</item>
+		<item>Поверхнева</item>
+		<item>Підзамче</item>
+	</string-array>
+
 	<string-array name="OrderSortModes">
 		<item>@string/eor_ordertimestamp</item>
 		<item>@string/eor_addr</item>
