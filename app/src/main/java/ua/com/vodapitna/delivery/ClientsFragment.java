@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Spinner;
+import android.widget.EditText;
+import android.view.WindowManager;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
 
 public class ClientsFragment extends Fragment {
 
@@ -33,6 +37,7 @@ public class ClientsFragment extends Fragment {
         Spinner spinOrder = (Spinner) v.findViewById(R.id.svClientsSortMode);
         Button btadd = (Button) v.findViewById(R.id.btAddContactButton);
         Button btsearch = (Button) v.findViewById(R.id.btSearchContactButton);
+	final EditText searchtext = (EditText) v.findViewById(R.id.ClientsSearchText);
         ClientsAdapter adapter = new ClientsAdapter(getActivity());
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -76,9 +81,13 @@ public class ClientsFragment extends Fragment {
         btsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SQLHandler mDbHandler = new SQLHandler(getContext());
-                mDbHandler.executeQuery("DELETE FROM clients;");
-
+                //~ SQLHandler mDbHandler = new SQLHandler(getContext());
+                //~ mDbHandler.executeQuery("DELETE FROM clients;");
+		searchtext.setVisibility(View.VISIBLE);
+		searchtext.requestFocus();
+		//getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+		InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+		    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
                 /*ClientsEditFragment clienteditdialog = new ClientsEditFragment();
                 Bundle b = new Bundle();
                 b.putString("clientid","2");

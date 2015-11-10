@@ -29,17 +29,19 @@
             android:entries="@array/ClientSortModes" />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/ClientsSearchText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+	android:singleLine="true"
+        android:hint="@string/SearchText"
+	android:visibility="gone" />
+
     <ListView
         android:id="@+id/lvClientsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
-
-    <CheckBox
-        android:id="@+id/cbShowInvisibleClients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/showInvisible" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
