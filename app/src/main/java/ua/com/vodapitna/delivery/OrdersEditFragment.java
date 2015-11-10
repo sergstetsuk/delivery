@@ -16,9 +16,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.AutoCompleteTextView;
 import android.widget.SimpleCursorAdapter;
-import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.SimpleCursorAdapter;
+import android.widget.SimpleCursorAdapter.CursorToStringConverter;
+import android.widget.FilterQueryProvider;
+import android.util.Log;
 
 /**
  * Created by sergal on 06.10.15.
@@ -40,7 +44,7 @@ public class OrdersEditFragment extends DialogFragment {
 
 	final TextView Name = (TextView) customDialogView.findViewById(R.id.eor_name);
 	final Spinner Cat = (Spinner) customDialogView.findViewById(R.id.eor_cat);
-	final EditText Addr = (EditText) customDialogView.findViewById(R.id.eor_addr);
+	final AutoCompleteTextView Addr = (AutoCompleteTextView) customDialogView.findViewById(R.id.eor_addr);
 	final EditText House = (EditText) customDialogView.findViewById(R.id.eor_house);
 	final EditText Office = (EditText) customDialogView.findViewById(R.id.eor_office);
 	final EditText Floor = (EditText) customDialogView.findViewById(R.id.eor_floor);
@@ -64,7 +68,28 @@ public class OrdersEditFragment extends DialogFragment {
 
 	final String clientid = getArguments().getString("clientid");
 	final String orderid = getArguments().getString("orderid");
-	SQLHandler mDbHandler = new SQLHandler(getContext());
+	final SQLHandler mDbHandler = new SQLHandler(getContext());
+
+	SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(),android.R.layout.simple_list_item_1,
+			null,new String[] {"addr"},new int[] {android.R.id.text1},0);
+
+	adapter.setFilterQueryProvider(new FilterQueryProvider() {
+		@Override
+		public Cursor runQuery(CharSequence str) {
+			Cursor mCursor1 = mDbHandler.selectQuery("SELECT id as _id, addr FROM clients"
+				+ " WHERE addr LIKE '" + str +"%' GROUP BY addr;");
+			return mCursor1;
+		}
+	});
+
+	adapter.setCursorToStringConverter(new CursorToStringConverter() {
+		@Override
+		public CharSequence convertToString(Cursor cur) {
+		int index = cur.getColumnIndex("addr");
+		return cur.getString(index);
+	}});
+
+	Addr.setAdapter(adapter);
 
 	if(orderid != null) {
 		Cursor mCursor = mDbHandler.selectQuery("SELECT o.*, datetime(o.completetimestamp,'localtime') as localcompletetimestamp, datetime(o.changed,'localtime') as localchanged FROM orders o WHERE id=" + orderid + ";");

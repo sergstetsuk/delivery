@@ -15,12 +15,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.SimpleCursorAdapter;
-import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ArrayAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.widget.FilterQueryProvider;
+import android.util.Log;
 
 /**
  * Created by sergal on 06.10.15.
@@ -86,6 +86,7 @@ public class ClientsEditFragment extends DialogFragment {
 	}});
 
 	Addr.setAdapter(adapter);
+
 	if(clientid != null) {
 		Cursor mCursor = mDbHandler.selectQuery("SELECT c.*, datetime(c.changed,'localtime') as localchanged FROM clients c WHERE id=" + clientid + ";");
 		mCursor.moveToFirst();
