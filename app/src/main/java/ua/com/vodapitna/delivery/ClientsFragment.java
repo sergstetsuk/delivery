@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Spinner;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.view.WindowManager;
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
+import android.text.TextWatcher;
+import android.text.Editable;
 
 public class ClientsFragment extends Fragment {
 
@@ -32,13 +35,39 @@ public class ClientsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.clients_fragment, container, false);
 
+	final View searchdialog = (View) v.findViewById(R.id.ClientsSearchDialog);
         TextView tv = (TextView) v.findViewById(R.id.tvHeader);
         final ListView lv = (ListView) v.findViewById(R.id.lvClientsList);
         Spinner spinOrder = (Spinner) v.findViewById(R.id.svClientsSortMode);
         Button btadd = (Button) v.findViewById(R.id.btAddContactButton);
         Button btsearch = (Button) v.findViewById(R.id.btSearchContactButton);
+        ImageButton btclosesearch = (ImageButton) v.findViewById(R.id.closeSearch);
 	final EditText searchtext = (EditText) v.findViewById(R.id.ClientsSearchText);
         ClientsAdapter adapter = new ClientsAdapter(getActivity());
+	searchtext.addTextChangedListener(new TextWatcher(){
+		@Override
+		public void afterTextChanged(Editable s){
+			ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
+			ad.setFilter(s.toString());
+			ad.notifyDataSetChanged();
+		}
+		@Override
+		public void beforeTextChanged(CharSequence s,int start,int count,int before){
+		}
+		@Override
+		public void onTextChanged(CharSequence s,int start,int count,int before){
+		}
+	});
+        btclosesearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+		searchtext.setText("");
+		searchdialog.setVisibility(View.GONE);
+                ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+
+            }
+        });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -49,6 +78,16 @@ public class ClientsFragment extends Fragment {
                 clienteditdialog.show(getFragmentManager(), null);
             }
         });
+        /*lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                ClientsEditFragment clienteditdialog = new ClientsEditFragment();
+                Bundle b = new Bundle();
+                b.putString("clientid", String.valueOf(id));
+                clienteditdialog.setArguments(b);
+                clienteditdialog.show(getFragmentManager(), null);
+            }
+        });*/
         spinOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -83,11 +122,11 @@ public class ClientsFragment extends Fragment {
             public void onClick(View v) {
                 //~ SQLHandler mDbHandler = new SQLHandler(getContext());
                 //~ mDbHandler.executeQuery("DELETE FROM clients;");
-		searchtext.setVisibility(View.VISIBLE);
+		searchdialog.setVisibility(View.VISIBLE);
 		searchtext.requestFocus();
 		//getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-		InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-		    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+		//~ InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+		    //~ imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
                 /*ClientsEditFragment clienteditdialog = new ClientsEditFragment();
                 Bundle b = new Bundle();
                 b.putString("clientid","2");
@@ -95,7 +134,6 @@ public class ClientsFragment extends Fragment {
                 clienteditdialog.show(getFragmentManager(),null);*/
                 ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
                 ad.notifyDataSetChanged();
-
             }
         });
 

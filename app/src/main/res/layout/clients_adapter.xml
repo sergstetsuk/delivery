@@ -25,7 +25,7 @@
 
     </LinearLayout>
 
-    <!-- Title Of Song-->
+    <!-- Name, Address, phone-->
     <LinearLayout
         android:id="@+id/infobox"
         android:layout_width="fill_parent"
