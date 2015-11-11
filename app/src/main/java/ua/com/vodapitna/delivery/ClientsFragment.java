@@ -68,6 +68,18 @@ public class ClientsFragment extends Fragment {
 
             }
         });
+	searchtext.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) {
+			InputMethodManager imm =  (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+			if (hasFocus) {
+					imm.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT);
+					//~ imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+				} else {
+					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+			}
+		}
+	});
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -78,16 +90,22 @@ public class ClientsFragment extends Fragment {
                 clienteditdialog.show(getFragmentManager(), null);
             }
         });
-        /*lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                ClientsEditFragment clienteditdialog = new ClientsEditFragment();
-                Bundle b = new Bundle();
-                b.putString("clientid", String.valueOf(id));
-                clienteditdialog.setArguments(b);
-                clienteditdialog.show(getFragmentManager(), null);
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                SQLHandler mDbHandler = new SQLHandler(getContext());
+                mDbHandler.executeQuery("DELETE FROM clients WHERE id='" + String.valueOf(id) + "';");
+
+                //ClientsEditFragment clienteditdialog = new ClientsEditFragment();
+                //Bundle b = new Bundle();
+                //b.putString("clientid", String.valueOf(id));
+                //clienteditdialog.setArguments(b);
+                //clienteditdialog.show(getFragmentManager(), null);
+                ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+		return true;
             }
-        });*/
+        });
         spinOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

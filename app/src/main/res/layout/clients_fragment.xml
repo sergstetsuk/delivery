@@ -31,23 +31,26 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/ClientsSearchDialog"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 	android:visibility="gone" >
-	<ImageButton
-		android:id="@+id/closeSearch"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="?android:selectableItemBackground"
-		android:src="@mipmap/ic_close_search" />
 	<EditText
 		android:id="@+id/ClientsSearchText"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:singleLine="true"
+		android:layout_weight="1"
 		android:hint="@string/SearchText"
+		android:layout_toLeftOf="@+id/closeSearch"
 		android:inputType="textCapWords" />
+	<ImageButton
+		android:id="@+id/closeSearch"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="?android:selectableItemBackground"
+		android:layout_alignParentRight="true"
+		android:src="@mipmap/ic_close_search" />
     </LinearLayout>
 
     <ListView
