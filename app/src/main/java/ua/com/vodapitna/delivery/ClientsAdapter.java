@@ -22,7 +22,7 @@ public class ClientsAdapter extends BaseAdapter {
 	private FragmentActivity mActivity;
 	private SQLHandler mDbHandler;
 	private Cursor mCursor;
-	private String mFilter = "";
+	private String mFilter = "1=1";
 
 	public ClientsAdapter(FragmentActivity a) {
 		mActivity = a;
@@ -34,20 +34,21 @@ public class ClientsAdapter extends BaseAdapter {
 	@Override
 	public void notifyDataSetChanged() {
 		Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svClientsSortMode);
-		String SQLWhere = "";
-		if(sortselect==null || sortselect.getSelectedItemId()==0) {
-			mCursor = mDbHandler.selectQuery("SELECT c.* FROM clients c " + mFilter + " ORDER BY c.addr ASC;");
-		} else {
-			mCursor = mDbHandler.selectQuery("SELECT c.* FROM clients c " + mFilter + " ORDER BY c.name ASC;");
+		String Sort = "ORDER BY c.addr ASC";
+		if (sortselect!=null) {
+			if(sortselect.getSelectedItemId()==1) {
+				Sort = "ORDER BY c.name ASC";
+			}
 		}
+		mCursor = mDbHandler.selectQuery("SELECT c.* FROM clients c WHERE " + mFilter + " " + Sort +";");
 		super.notifyDataSetChanged();
 	}
 
 	public void setFilter(String s){
 		if (s.length() > 0) {
-			mFilter = "WHERE c.name LIKE '" + s + "%' OR c.addr LIKE '" + s + "%'";
+			mFilter = "c.name LIKE '" + s + "%' OR c.addr LIKE '" + s + "%'";
 		} else {
-			mFilter = "";
+			mFilter = "1=1";
 		}
 	}
 

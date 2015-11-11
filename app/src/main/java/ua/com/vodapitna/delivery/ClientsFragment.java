@@ -41,7 +41,7 @@ public class ClientsFragment extends Fragment {
         Spinner spinOrder = (Spinner) v.findViewById(R.id.svClientsSortMode);
         Button btadd = (Button) v.findViewById(R.id.btAddContactButton);
         Button btsearch = (Button) v.findViewById(R.id.btSearchContactButton);
-        ImageButton btclosesearch = (ImageButton) v.findViewById(R.id.closeSearch);
+        ImageButton btclosesearch = (ImageButton) v.findViewById(R.id.ClientsCloseSearch);
 	final EditText searchtext = (EditText) v.findViewById(R.id.ClientsSearchText);
         ClientsAdapter adapter = new ClientsAdapter(getActivity());
 	searchtext.addTextChangedListener(new TextWatcher(){
@@ -95,12 +95,6 @@ public class ClientsFragment extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 SQLHandler mDbHandler = new SQLHandler(getContext());
                 mDbHandler.executeQuery("DELETE FROM clients WHERE id='" + String.valueOf(id) + "';");
-
-                //ClientsEditFragment clienteditdialog = new ClientsEditFragment();
-                //Bundle b = new Bundle();
-                //b.putString("clientid", String.valueOf(id));
-                //clienteditdialog.setArguments(b);
-                //clienteditdialog.show(getFragmentManager(), null);
                 ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
                 ad.notifyDataSetChanged();
 		return true;

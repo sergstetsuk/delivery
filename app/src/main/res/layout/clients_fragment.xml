@@ -45,7 +45,7 @@
 		android:layout_toLeftOf="@+id/closeSearch"
 		android:inputType="textCapWords" />
 	<ImageButton
-		android:id="@+id/closeSearch"
+		android:id="@+id/ClientsCloseSearch"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:background="?android:selectableItemBackground"

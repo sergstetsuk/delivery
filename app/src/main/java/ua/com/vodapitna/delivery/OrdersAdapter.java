@@ -25,6 +25,7 @@ public class OrdersAdapter extends BaseAdapter {
 	private FragmentActivity mActivity;
 	private SQLHandler mDbHandler;
 	private Cursor mCursor;
+	private String mFilter = "1=1";
 
 	public OrdersAdapter(FragmentActivity a) {
 		mActivity = a;
@@ -36,8 +37,8 @@ public class OrdersAdapter extends BaseAdapter {
 	@Override
 	public void notifyDataSetChanged() {
 		String Sort = "ORDER BY o.result ASC, o.ordertimestamp ASC";
-		String Filter = "WHERE result == " //+ "'В процесі'";
-			+ "'" + mActivity.getResources().getStringArray(R.array.ResultTypes)[0] + "'"; //todo: get from array of ResultTypes index[0]
+		String Filter = "result = " //+ "'В процесі'";
+			+ "'" + mActivity.getResources().getStringArray(R.array.ResultTypes)[0] + "'";
 		Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svOrdersSortMode);
 		if (sortselect!=null) {
 			if (sortselect.getSelectedItemId() == 1)
@@ -47,10 +48,19 @@ public class OrdersAdapter extends BaseAdapter {
 		}
 		CheckBox showinvisible = (CheckBox) mActivity.findViewById(R.id.cbShowInvisibleOrders);
 		if (showinvisible!=null && showinvisible.isChecked()) {
-			Filter = "";
+			Filter = "1=1";
 		}
-		mCursor = mDbHandler.selectQuery("SELECT o.* FROM orders o " + Filter + " " + Sort + ";");
+		mCursor = mDbHandler.selectQuery("SELECT o.* FROM orders o WHERE " + Filter
+			+ " AND " + mFilter + " " + Sort + ";");
 		super.notifyDataSetChanged();
+	}
+
+	public void setFilter(String s){
+		if (s.length() > 0) {
+			mFilter = "o.name LIKE '" + s + "%' OR o.addr LIKE '" + s + "%'";
+		} else {
+			mFilter = "1=1";
+		}
 	}
 
 	public int getCount() {
