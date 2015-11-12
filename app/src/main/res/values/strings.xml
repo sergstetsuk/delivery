@@ -11,6 +11,7 @@
 	<string name="searchContactButtonLabel">Пошук</string>
 	<string name="showInvisible">Показати приховані</string>
 	<string name="SearchText">Текст для пошуку</string>
+	<string name="ChoosePhone">Виберіть номер</string>
 
 	<string-array name="ClientSortModes">
 		<item>@string/ecl_addr</item>

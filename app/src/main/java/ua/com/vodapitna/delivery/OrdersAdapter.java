@@ -113,8 +113,20 @@ public class OrdersAdapter extends BaseAdapter {
 		final View.OnClickListener makeCallListener = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + telephone.getText()));
-				inflater.getContext().startActivity(intent);
+				String teltext = telephone.getText().toString();
+				if (!teltext.isEmpty()) {
+					if (teltext.indexOf(", ") == -1) {
+						Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + telephone.getText()));
+						inflater.getContext().startActivity(intent);
+					} else {
+						CallFragment calldialog = new CallFragment();
+						Bundle b = new Bundle();
+						b.putString("phones", teltext);
+						calldialog.setArguments(b);
+						calldialog.show(mActivity.getSupportFragmentManager(), null);
+
+					}
+				}
 			}
 		};
 
@@ -141,8 +153,15 @@ public class OrdersAdapter extends BaseAdapter {
 			" "+mCursor.getString(mCursor.getColumnIndex("addr"))+
 			", "+mCursor.getString(mCursor.getColumnIndex("house"))+
 			"/"+mCursor.getString(mCursor.getColumnIndex("office")));
-		telephone.setText(mCursor.getString(mCursor.getColumnIndex("phone")));
-		/*todo: need to check phone1 and show*/
+		String tPhone = "";
+		if (!mCursor.getString(mCursor.getColumnIndex("phone")).isEmpty()) {
+			tPhone += mCursor.getString(mCursor.getColumnIndex("phone"));
+		}
+		if (!mCursor.getString(mCursor.getColumnIndex("phone1")).isEmpty()) {
+			if(!tPhone.isEmpty()) tPhone += ", ";
+			tPhone += mCursor.getString(mCursor.getColumnIndex("phone1"));
+		}
+		telephone.setText(tPhone);
 		return vi;
 	}
 }
