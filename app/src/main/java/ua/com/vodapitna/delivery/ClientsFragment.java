@@ -36,7 +36,6 @@ public class ClientsFragment extends Fragment {
         View v = inflater.inflate(R.layout.clients_fragment, container, false);
 
 	final View searchdialog = (View) v.findViewById(R.id.ClientsSearchDialog);
-        TextView tv = (TextView) v.findViewById(R.id.tvHeader);
         final ListView lv = (ListView) v.findViewById(R.id.lvClientsList);
         Spinner spinOrder = (Spinner) v.findViewById(R.id.svClientsSortMode);
         Button btadd = (Button) v.findViewById(R.id.btAddContactButton);
@@ -65,7 +64,6 @@ public class ClientsFragment extends Fragment {
 		searchdialog.setVisibility(View.GONE);
                 ClientsAdapter ad = (ClientsAdapter) lv.getAdapter();
                 ad.notifyDataSetChanged();
-
             }
         });
 	searchtext.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -150,7 +148,6 @@ public class ClientsFragment extends Fragment {
         });
 
         lv.setAdapter(adapter);
-        tv.setText(getArguments().getString("msg"));
 
         return v;
     }

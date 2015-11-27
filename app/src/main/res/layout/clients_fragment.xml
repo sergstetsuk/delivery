@@ -1,81 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_dark"
-    android:orientation="vertical">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/holo_orange_dark"
+	android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/tvHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Клієнти"
-            android:textSize="26dp" />
-        <Spinner
-            android:id="@+id/svClientsSortMode"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Сортування"
-            android:textSize="26dp"
-            android:popupBackground="@android:color/holo_green_dark"
-            android:entries="@array/ClientSortModes" />
-    </LinearLayout>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/ClientsSearchDialog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-	android:visibility="gone" >
-	<EditText
-		android:id="@+id/ClientsSearchText"
-		android:layout_width="fill_parent"
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:singleLine="true"
-		android:layout_weight="1"
-		android:hint="@string/SearchText"
-		android:layout_toLeftOf="@+id/closeSearch"
-		android:inputType="textCapWords" />
-	<ImageButton
-		android:id="@+id/ClientsCloseSearch"
-		android:layout_width="wrap_content"
+		android:orientation="horizontal">
+		<TextView
+			android:id="@+id/tvHeader"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:text="Клієнти"
+			android:textSize="26dp" />
+		<Spinner
+			android:id="@+id/svClientsSortMode"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:text="Сортування"
+			android:textSize="26dp"
+			android:popupBackground="@android:color/holo_green_dark"
+			android:entries="@array/ClientSortModes" />
+	</LinearLayout>
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/ClientsSearchDialog"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="?android:selectableItemBackground"
-		android:layout_alignParentRight="true"
-		android:src="@mipmap/ic_close_search" />
-    </LinearLayout>
+		android:orientation="horizontal"
+		android:visibility="gone" >
+		<EditText
+			android:id="@+id/ClientsSearchText"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:singleLine="true"
+			android:layout_weight="1"
+			android:hint="@string/SearchText"
+			android:layout_toLeftOf="@+id/closeSearch"
+			android:inputType="textCapWords" />
+		<ImageButton
+			android:id="@+id/ClientsCloseSearch"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="?android:selectableItemBackground"
+			android:layout_alignParentRight="true"
+			android:src="@mipmap/ic_close_search" />
+	</LinearLayout>
 
-    <ListView
-        android:id="@+id/lvClientsList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+	<ListView
+		android:id="@+id/lvClientsList"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btAddContactButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/addContactButtonLabel" />
+		<Button
+			android:id="@+id/btAddContactButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/addContactButtonLabel" />
 
-        <Button
-            android:id="@+id/btSearchContactButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/searchContactButtonLabel" />
-    </LinearLayout>
+		<Button
+			android:id="@+id/btSearchContactButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/searchContactButtonLabel" />
+	</LinearLayout>
 </LinearLayout>
