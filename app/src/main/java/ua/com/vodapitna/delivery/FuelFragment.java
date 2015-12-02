@@ -46,9 +46,9 @@ public class FuelFragment extends Fragment {
 	searchtext.addTextChangedListener(new TextWatcher(){
 		@Override
 		public void afterTextChanged(Editable s){
-			//~ FuelAdapter ad = (FuelAdapter) lv.getAdapter();
-			//~ ad.setFilter(s.toString());
-			//~ ad.notifyDataSetChanged();
+			FuelAdapter ad = (FuelAdapter) lv.getAdapter();
+			ad.setFilter(s.toString());
+			ad.notifyDataSetChanged();
 		}
 		@Override
 		public void beforeTextChanged(CharSequence s,int start,int count,int before){
@@ -60,10 +60,10 @@ public class FuelFragment extends Fragment {
         btclosesearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-		//~ searchtext.setText("");
-		//~ searchdialog.setVisibility(View.GONE);
-                //~ FuelAdapter ad = (FuelAdapter) lv.getAdapter();
-                //~ ad.notifyDataSetChanged();
+		searchtext.setText("");
+		searchdialog.setVisibility(View.GONE);
+                FuelAdapter ad = (FuelAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
             }
         });
 	searchtext.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -81,11 +81,11 @@ public class FuelFragment extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //~ FuelEditFragment clienteditdialog = new FuelEditFragment();
-                //~ Bundle b = new Bundle();
-                //~ b.putString("clientid", String.valueOf(id));
-                //~ clienteditdialog.setArguments(b);
-                //~ clienteditdialog.show(getFragmentManager(), null);
+                FuelEditFragment clienteditdialog = new FuelEditFragment();
+                Bundle b = new Bundle();
+                b.putString("fuelid", String.valueOf(id));
+                clienteditdialog.setArguments(b);
+                clienteditdialog.show(getFragmentManager(), null);
             }
         });
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -101,35 +101,38 @@ public class FuelFragment extends Fragment {
         spinOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //~ FuelAdapter ad = (FuelAdapter) lv.getAdapter();
-                //~ ad.notifyDataSetChanged();
+                FuelAdapter ad = (FuelAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
             }
             //@Override
             public void onNothingSelected(AdapterView<?> parent) {
-                //~ FuelAdapter ad = (FuelAdapter) lv.getAdapter();
-                //~ ad.notifyDataSetChanged();
+                FuelAdapter ad = (FuelAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
             }
         });
         btadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-		//~ FuelEditFragment clienteditdialog = new FuelEditFragment();
-                //~ Bundle b = new Bundle();
-                //~ b.putString("fuelid", null);
-                //~ clienteditdialog.setArguments(b);
-                //~ clienteditdialog.show(getFragmentManager(), null);
-                //~ FuelAdapter ad = (FuelAdapter) lv.getAdapter();
-                //~ ad.notifyDataSetChanged();
+		FuelEditFragment clienteditdialog = new FuelEditFragment();
+                Bundle b = new Bundle();
+                b.putString("fuelid", null);
+                clienteditdialog.setArguments(b);
+                clienteditdialog.show(getFragmentManager(), null);
+                FuelAdapter ad = (FuelAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
             }
         });
 
         btsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-		//~ searchdialog.setVisibility(View.VISIBLE);
-		//~ searchtext.requestFocus();
-                //~ FuelAdapter ad = (FuelAdapter) lv.getAdapter();
-                //~ ad.notifyDataSetChanged();
+		SQLHandler mDbHandler = new SQLHandler(getContext());
+                mDbHandler.executeQuery("INSERT INTO fuel (car) VALUES 'blabla';");
+
+		searchdialog.setVisibility(View.VISIBLE);
+		searchtext.requestFocus();
+                FuelAdapter ad = (FuelAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
             }
         });
 

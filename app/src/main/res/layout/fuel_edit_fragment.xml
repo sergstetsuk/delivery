@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/holo_red_light"
+	android:orientation="vertical">
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+<RelativeLayout
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_margin="5dp" >
+	<TextView
+		android:id="@+id/efu_header"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:text="@string/efu_header"
+		android:textSize="26dp" />
+	<AutoCompleteTextView
+		android:id="@+id/efu_car"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_header"
+		android:hint="@string/efu_car"
+		android:nextFocusDown="@+id/efu_driver"
+		android:singleLine="true"
+		android:inputType="textCapWords"
+		android:completionThreshold="2"
+		android:imeOptions="actionNext" />
+	<EditText
+		android:id="@+id/efu_driver"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_car"
+		android:ems="10"
+		android:hint="@string/efu_driver"
+		android:nextFocusDown="@+id/efu_starttimestamp"
+		android:singleLine="true"
+		android:inputType="textCapWords" />
+	<EditText
+		android:id="@+id/efu_starttimestamp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_driver"
+		android:hint="@string/efu_starttimestamp"
+		android:nextFocusDown="@+id/efu_odometerstart"
+		android:inputType="number"
+		android:digits="0123456789-: "
+		android:singleLine="true" />
+	<EditText
+		android:id="@+id/efu_odometerstart"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_starttimestamp"
+		android:hint="@string/efu_odometerstart"
+		android:nextFocusDown="@+id/efu_finishtimestamp"
+		android:singleLine="true"
+		android:inputType="number" />
+	<EditText
+		android:id="@+id/efu_finishtimestamp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_odometerstart"
+		android:hint="@string/efu_finishtimestamp"
+		android:nextFocusDown="@+id/efu_odometerend"
+		android:inputType="number"
+		android:digits="0123456789-: "
+		android:singleLine="true" />
+	<EditText
+		android:id="@+id/efu_odometerend"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_finishtimestamp"
+		android:hint="@string/efu_odometerend"
+		android:nextFocusDown="@+id/efu_fuelstart"
+		android:singleLine="true"
+		android:inputType="number" />
+	<EditText
+		android:id="@+id/efu_fuelstart"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_odometerend"
+		android:hint="@string/efu_fuelstart"
+		android:nextFocusDown="@+id/efu_fueladd"
+		android:singleLine="true"
+		android:inputType="number"/>
+	<EditText
+		android:id="@+id/efu_fueladd"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_fuelstart"
+		android:hint="@string/efu_fueladd"
+		android:nextFocusDown="@+id/efu_price"
+		android:singleLine="true"
+		android:inputType="number"/>
+	<EditText
+		android:id="@+id/efu_price"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_fueladd"
+		android:hint="@string/efu_price"
+		android:nextFocusDown="@+id/efu_changed"
+		android:singleLine="true"
+		android:inputType="number"/>
+	<TextView
+		android:id="@+id/efu_changed"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_price"
+		android:text="@string/efu_changed"
+		android:textSize="10dp" />
+<LinearLayout
+	android:id="@+id/layout_submit"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_below="@id/efu_changed"
+	android:layout_margin="5dp"
+	android:orientation="horizontal"
+	android:weightSum="2" >
+	<Button
+		android:id="@+id/button_ok"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:text="@string/efu_ok" />
+	<Button
+		android:id="@+id/button_cancel"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:text="@string/efu_cancel" />
+</LinearLayout>
+</RelativeLayout>
+</ScrollView>
+</LinearLayout>

@@ -48,7 +48,7 @@
 
 		<!-- Contact address -->
 		<TextView
-			android:id="@+id/address"
+			android:id="@+id/timestamp"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/name"

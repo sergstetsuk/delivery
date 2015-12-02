@@ -27,8 +27,8 @@
 			android:layout_centerVertical="true"
 			android:text="Сортування"
 			android:textSize="26dp"
-			android:popupBackground="@android:color/holo_green_dark"
-			android:entries="@array/ClientSortModes" />
+			android:popupBackground="@android:color/holo_red_light"
+			android:entries="@array/FuelSortModes" />
 	</LinearLayout>
 
 	<LinearLayout

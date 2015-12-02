@@ -37,30 +37,24 @@ public class FuelAdapter extends BaseAdapter {
 	@Override
 	public void notifyDataSetChanged() {
 		String Sort = "ORDER BY f.starttimestamp DESC";
-		//~ String Filter = "result = " //+ "'В процесі'";
-			//~ + "'" + mActivity.getResources().getStringArray(R.array.ResultTypes)[0] + "'";
-		//~ Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svFuelSortMode);
-		//~ if (sortselect!=null) {
-			//~ if (sortselect.getSelectedItemId() == 1)
-				//~ Sort = "ORDER BY f.result ASC, f.addr ASC";
-			//~ else if (sortselect.getSelectedItemId() == 2)
-				//~ Sort = "ORDER BY f.result ASC, f.name ASC";
-		//~ }
-		//~ CheckBox showinvisible = (CheckBox) mActivity.findViewById(R.id.cbShowInvisibleFuel);
-		//~ if (showinvisible!=null && showinvisible.isChecked()) {
-			//~ Filter = "1=1";
-		//~ }
+		Spinner sortselect = (Spinner) mActivity.findViewById(R.id.svFuelSortMode);
+		if (sortselect!=null) {
+			if (sortselect.getSelectedItemId() == 1)
+				Sort = "ORDER BY f.car ASC, f.starttimestamp DESC";
+			else if (sortselect.getSelectedItemId() == 2)
+				Sort = "ORDER BY f.driver ASC, f.starttimestamp DESC";
+		}
 		mCursor = mDbHandler.selectQuery("SELECT f.* FROM fuel f WHERE "
 			+ mFilter + " " + Sort + ";");
 		super.notifyDataSetChanged();
 	}
 
 	public void setFilter(String s){
-		//~ if (s.length() > 0) {
-			//~ mFilter = "f.name LIKE '" + s + "%' OR f.addr LIKE '" + s + "%'";
-		//~ } else {
-			//~ mFilter = "1=1";
-		//~ }
+		if (s.length() > 0) {
+			mFilter = "f.car LIKE '" + s + "%' OR f.driver LIKE '" + s + "%'";
+		} else {
+			mFilter = "1=1";
+		}
 	}
 
 	public int getCount() {
@@ -84,65 +78,54 @@ public class FuelAdapter extends BaseAdapter {
 		if (convertView == null)
 			vi = inflater.inflate(R.layout.fuel_adapter, null);
 
-		//~ TextView name = (TextView) vi.findViewById(R.id.name); // name
-		//~ final TextView address = (TextView) vi.findViewById(R.id.address);
-		//~ final TextView telephone = (TextView) vi.findViewById(R.id.telephone);
-		//~ final long id = getItemId(position);
-		//~ ImageButton btCall = (ImageButton) vi.findViewById(R.id.callButton);
+		TextView name = (TextView) vi.findViewById(R.id.name); // name
+		final TextView timestamp = (TextView) vi.findViewById(R.id.timestamp);
+		final TextView telephone = (TextView) vi.findViewById(R.id.telephone);
+		final long id = getItemId(position);
+		ImageButton btCall = (ImageButton) vi.findViewById(R.id.callButton);
 
-		//~ //click listener for CALL action
-		//~ final View.OnClickListener makeCallListener = new View.OnClickListener() {
-			//~ @Override
-			//~ public void onClick(View v) {
-				//~ String teltext = telephone.getText().toString();
-				//~ if (!teltext.isEmpty()) {
-					//~ if (teltext.indexOf(", ") == -1) {
-						//~ Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + telephone.getText()));
-						//~ inflater.getContext().startActivity(intent);
-					//~ } else {
+		//click listener for CALL action
+		final View.OnClickListener makeCallListener = new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String teltext = telephone.getText().toString();
+				if (!teltext.isEmpty()) {
+					if (teltext.indexOf(", ") == -1) {
+						Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + telephone.getText()));
+						inflater.getContext().startActivity(intent);
+					} else {
 						//~ CallFragment calldialog = new CallFragment();
 						//~ Bundle b = new Bundle();
 						//~ b.putString("phones", teltext);
 						//~ calldialog.setArguments(b);
 						//~ calldialog.show(mActivity.getSupportFragmentManager(), null);
+					}
+				}
+			}
+		};
 
-					//~ }
-				//~ }
-			//~ }
-		//~ };
+		btCall.setOnClickListener(makeCallListener);
 
-		//~ btCall.setOnClickListener(makeCallListener);
-
-		//~ ImageButton btAddOrder = (ImageButton) vi.findViewById(R.id.addOrderButton);
+		ImageButton btAddOrder = (ImageButton) vi.findViewById(R.id.addOrderButton);
 
 		//click listener for CALL action
-		//~ final View.OnClickListener addOrderListener = new View.OnClickListener() {
-			//~ @Override
-			//~ public void onClick(View v) {
-				//~ FuelEditFragment fueleditdialog = new FuelEditFragment();
-				//~ Bundle b = new Bundle();
-				//~ b.putString("fuelid", String.valueOf(id));
-				//~ fueleditdialog.setArguments(b);
-				//~ fueleditdialog.show(mActivity.getSupportFragmentManager(), null);
-			//~ }
-		//~ };
+		final View.OnClickListener addOrderListener = new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FuelEditFragment fueleditdialog = new FuelEditFragment();
+				Bundle b = new Bundle();
+				b.putString("fuelid", String.valueOf(id));
+				fueleditdialog.setArguments(b);
+				fueleditdialog.show(mActivity.getSupportFragmentManager(), null);
+			}
+		};
 
-		//~ btAddOrder.setOnClickListener(addOrderListener);
+		btAddOrder.setOnClickListener(addOrderListener);
 
-		//~ name.setText(mCursor.getString(mCursor.getColumnIndex("name")));
-		//~ address.setText(mCursor.getString(mCursor.getColumnIndex("cat"))+
-			//~ " "+mCursor.getString(mCursor.getColumnIndex("addr"))+
-			//~ ", "+mCursor.getString(mCursor.getColumnIndex("house"))+
-			//~ "/"+mCursor.getString(mCursor.getColumnIndex("office")));
-		//~ String tPhone = "";
-		//~ if (!mCursor.getString(mCursor.getColumnIndex("phone")).isEmpty()) {
-			//~ tPhone += mCursor.getString(mCursor.getColumnIndex("phone"));
-		//~ }
-		//~ if (!mCursor.getString(mCursor.getColumnIndex("phone1")).isEmpty()) {
-			//~ if(!tPhone.isEmpty()) tPhone += ", ";
-			//~ tPhone += mCursor.getString(mCursor.getColumnIndex("phone1"));
-		//~ }
-		//~ telephone.setText(tPhone);
+		name.setText(mCursor.getString(mCursor.getColumnIndex("car"))
+			+"("+mCursor.getString(mCursor.getColumnIndex("driver"))+")");
+		timestamp.setText(mCursor.getString(mCursor.getColumnIndex("starttimestamp")));
+		telephone.setText("");
 		return vi;
 	}
 }

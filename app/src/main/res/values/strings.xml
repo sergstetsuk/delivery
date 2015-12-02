@@ -18,17 +18,16 @@
 		<item>@string/ecl_name</item>
 	</string-array>
 
-	<string-array name="list_of_countries">
-		<item>Повстанська</item>
-		<item>Повітряна</item>
-		<item>Поверхнева</item>
-		<item>Підзамче</item>
-	</string-array>
-
 	<string-array name="OrderSortModes">
 		<item>@string/eor_ordertimestamp</item>
 		<item>@string/eor_addr</item>
 		<item>@string/eor_name</item>
+	</string-array>
+
+	<string-array name="FuelSortModes">
+		<item>@string/efu_starttimestamp</item>
+		<item>@string/efu_car</item>
+		<item>@string/efu_driver</item>
 	</string-array>
 
 	<string-array name="StreetCategories">
@@ -100,4 +99,21 @@
 	<string name="eor_changed">Востаннє змінено:</string>
 	<string name="eor_ok">OK</string>
 	<string name="eor_cancel">Відміна</string>
+
+	<string name="efu_header">Картка витрати палива</string>
+	<string name="efu_car">Автомобіль</string>
+	<string name="efu_driver">ПІБ водія</string>
+	<string name="efu_starttimestamp">Дата/час виходу на маршрут</string>
+	<string name="efu_odometerstart">Початковий показник одометра</string>
+	<string name="efu_finishtimestamp">Дата/час завершення маршруту</string>
+	<string name="efu_odometerend">Кінцевий показник одометра</string>
+	<string name="efu_fuelstart">Початковий показник палива</string>
+	<string name="efu_fueladd">Заправлено палива</string>
+	<string name="efu_price">Вартість заправленого палива</string>
+	<string name="efu_changed">Востаннє змінено:</string>
+	<string name="efu_ok">OK</string>
+	<string name="efu_cancel">Відміна</string>
+	<string name="efu_firstorderdate">Дата першого замовлення</string>
+	<string name="efu_lastorderdate">Дата останнього замовлення</string>
+
 </resources>
