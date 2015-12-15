@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark">
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/holo_blue_dark">
 
-    <TextView
-        android:id="@+id/tvFragFourth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="TextView"
-        android:textSize="26dp" />
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/HeaderLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<TextView
+			android:id="@+id/tvStatisticsHeader"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:text="@string/FragmentStatistics"
+			android:textSize="26dp" />
+		<Spinner
+			android:id="@+id/svStatisticsPeriod"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:textSize="26dp"
+			android:popupBackground="@android:color/holo_green_dark"
+			android:entries="@array/StatisticsPeriodValues" />
+	</LinearLayout>
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/FooterLayout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_below="@+id/HeaderLayout"
+		android:layout_above="@+id/FooterLayout"
+		android:orientation="vertical">
+	<ScrollView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/BodyLayout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_below="@+id/HeaderLayout">
+		<TextView
+			android:id="@+id/tvStatistics"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="FragmentStatistics"
+			android:background="@android:color/holo_green_dark"
+			android:textSize="26dp"/>
+	</ScrollView>
+
+	</LinearLayout>
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/FooterLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/BodyLayout"
+		android:layout_alignParentBottom="true"
+		android:orientation="horizontal">
+		<Button
+			android:id="@+id/btExportButton"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/ExportButtonLabel" />
+
+	</LinearLayout>
 
 </RelativeLayout>

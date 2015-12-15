@@ -13,6 +13,8 @@
 	<string name="SearchText">Текст для пошуку</string>
 	<string name="ChoosePhone">Виберіть номер</string>
 
+	<string name="ExportButtonLabel">Надіслати звіт</string>
+
 	<string-array name="ClientSortModes">
 		<item>@string/ecl_addr</item>
 		<item>@string/ecl_name</item>
@@ -28,6 +30,13 @@
 		<item>@string/efu_starttimestamp</item>
 		<item>@string/efu_car</item>
 		<item>@string/efu_driver</item>
+	</string-array>
+
+	<string-array name="StatisticsPeriodValues">
+		<item>За день</item>
+		<item>За місяць</item>
+		<item>За весь період</item>
+		<item>Вибрати...</item>
 	</string-array>
 
 	<string-array name="StreetCategories">

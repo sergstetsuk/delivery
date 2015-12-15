@@ -17,7 +17,7 @@
 			android:layout_height="wrap_content"
 			android:layout_centerHorizontal="true"
 			android:layout_centerVertical="true"
-			android:text="Клієнти"
+			android:text="@string/FragmentClients"
 			android:textSize="26dp" />
 		<Spinner
 			android:id="@+id/svClientsSortMode"
