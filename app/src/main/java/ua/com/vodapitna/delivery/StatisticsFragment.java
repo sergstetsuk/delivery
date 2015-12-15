@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Spinner;
 import android.text.Html;
 
 public class StatisticsFragment extends Fragment {
@@ -25,20 +27,20 @@ public class StatisticsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.statistics_fragment, container, false);
 
-        TextView tv = (TextView) v.findViewById(R.id.tvStatistics);
-        tv.setText(Html.fromHtml("<b>Кількість:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість1:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість2:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість3:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість4:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість5:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість6:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість7:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість8:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість9:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість10:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість11:</b> %a<br/><b>Кілометраж:</b> %b<br/>"
-	    +"<b>Кількість12:</b> %a<br/><b>Кілометраж:</b> %b<br/>"));
+        Spinner spinPeriod = (Spinner) v.findViewById(R.id.svStatisticsPeriod);
+	final TextView tv = (TextView) v.findViewById(R.id.tvStatistics);
+
+	spinPeriod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+		tv.setText(Html.fromHtml("<b>Барабашка:</b> "+position+"<br/><b>Кілометраж:</b> "+id+"<br/>"));
+            }
+            //@Override
+            public void onNothingSelected(AdapterView<?> parent) {
+		tv.setText(Html.fromHtml("<b>CegthБарабашка:</b> %a<br/><b>Кілометраж:</b> %b<br/>"));
+            }
+        });
+
         return v;
     }
 }
