@@ -49,8 +49,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="FragmentStatistics"
-			android:background="@android:color/holo_green_dark"
-			android:textSize="26dp"/>
+			android:textSize="16dp"/>
 	</ScrollView>
 
 	</LinearLayout>

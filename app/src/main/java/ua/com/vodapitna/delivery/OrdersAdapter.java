@@ -102,11 +102,11 @@ public class OrdersAdapter extends BaseAdapter {
 		Log.d("DATE_FORMAT today",today);
 		Log.d("DATE_FORMAT tomorrow",tomorrow);
 		vi.setBackgroundColor(0xFF80FF80);
-		if (mCursor.getString(mCursor.getColumnIndex("o.ordertimestamp")).compareTo(today) < 0)
+		if (mCursor.getString(mCursor.getColumnIndex("ordertimestamp")).compareTo(today) < 0)
 			vi.setBackgroundColor(0xFFFF8080);
-		if (mCursor.getString(mCursor.getColumnIndex("o.ordertimestamp")).compareTo(tomorrow) >= 0)
+		if (mCursor.getString(mCursor.getColumnIndex("ordertimestamp")).compareTo(tomorrow) >= 0)
 			vi.setBackgroundColor(0xFF80FFFF);
-		if (mCursor.getString(mCursor.getColumnIndex("o.result")).compareTo(mActivity.getResources().getStringArray(R.array.ResultTypes)[0]) != 0)
+		if (mCursor.getString(mCursor.getColumnIndex("result")).compareTo(mActivity.getResources().getStringArray(R.array.ResultTypes)[0]) != 0)
 			vi.setBackgroundColor(0xFF808080);
 
 		//click listener for CALL action
