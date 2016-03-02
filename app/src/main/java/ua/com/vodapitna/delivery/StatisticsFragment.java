@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Spinner;
+import android.widget.Button;
 import android.text.Html;
 
 public class StatisticsFragment extends Fragment {
@@ -30,6 +31,7 @@ public class StatisticsFragment extends Fragment {
 
         Spinner spinPeriod = (Spinner) v.findViewById(R.id.svStatisticsPeriod);
 	final TextView tv = (TextView) v.findViewById(R.id.tvStatistics);
+	Button exportButton = (Button) v.findViewById(R.id.btExportButton);
 
 	spinPeriod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 		@Override
@@ -65,6 +67,14 @@ public class StatisticsFragment extends Fragment {
 		tv.setText("");
             }
         });
+
+	exportButton.setOnClickListener(new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			SQLHandler mDbHandler = new SQLHandler(getContext());
+			mDbHandler.exportDataBase();
+		}
+	});
 
         return v;
     }

@@ -54,4 +54,8 @@ public class SQLHandler {
 
     }
 
+    public void exportDataBase() {
+	dbHelper.exportDB();
+    }
+
 }

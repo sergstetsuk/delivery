@@ -2,6 +2,12 @@
 	<string name="app_name">Delivery</string>
 	<string name="action_settings">Налаштування</string>
 
+	<string name="auth_dialog">Авторизація</string>
+	<string name="auth_dialog_ok">Вхід</string>
+	<string name="auth_dialog_cancel">Відміна</string>
+	<string name="username">Користувач</string>
+	<string name="password">Пароль</string>
+
 	<string name="FragmentClients">Клієнти</string>
 	<string name="FragmentOrders">Замовлення</string>
 	<string name="FragmentFuel">Пальне</string>

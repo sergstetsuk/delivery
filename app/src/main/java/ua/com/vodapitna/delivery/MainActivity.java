@@ -7,13 +7,31 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
+
 public class MainActivity extends FragmentActivity {
+
+	private static String ACCESS_MODE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	//~ PACKAGE_NAME = getApplicationContext().getPackageName();
+	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+	AuthDialogFragment dialog = new AuthDialogFragment();
+	dialog.show(getSupportFragmentManager(),"AuthDialog");
 
+        //~ ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+        //~ pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+    }
+    public void setAccessMode(String am) {
+	    ACCESS_MODE = am;
+    }
+
+    public static boolean isAdmin() {
+	    return ACCESS_MODE.compareTo("admin") == 0;
+    }
+
+    public void start() {
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
     }
@@ -27,7 +45,6 @@ public class MainActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int pos) {
             switch (pos) {
-
                 case 0:
                     return ClientsFragment.newInstance(getResources().getString(R.string.FragmentClients));
                 case 1:
@@ -43,7 +60,7 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return 4;
+            return MainActivity.isAdmin()?4:3;
         }
     }
 }
