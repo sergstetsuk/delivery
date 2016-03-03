@@ -46,13 +46,15 @@ public class MainActivity extends FragmentActivity {
         public Fragment getItem(int pos) {
             switch (pos) {
                 case 0:
-                    return ClientsFragment.newInstance(getResources().getString(R.string.FragmentClients));
+                    return ClientsFragment.newInstance();
                 case 1:
-                    return OrdersFragment.newInstance(getResources().getString(R.string.FragmentOrders));
+                    return OrdersFragment.newInstance();
                 case 2:
-                    return FuelFragment.newInstance(getResources().getString(R.string.FragmentFuel));
+                    return FuelFragment.newInstance();
                 case 3:
-                    return StatisticsFragment.newInstance(getResources().getString(R.string.FragmentStatistics));
+                    return StatisticsFragment.newInstance();
+                case 4:
+                    return UserAdminFragment.newInstance();
                 default:
                     return null;
             }
@@ -60,7 +62,7 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return MainActivity.isAdmin()?4:3;
+            return MainActivity.isAdmin()?5:4;
         }
     }
 }

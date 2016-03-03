@@ -22,8 +22,7 @@ import android.text.Editable;
 
 public class OrdersFragment extends Fragment {
 
-    public static OrdersFragment newInstance(String text) {
-
+    public static OrdersFragment newInstance() {
         OrdersFragment f = new OrdersFragment();
         return f;
     }

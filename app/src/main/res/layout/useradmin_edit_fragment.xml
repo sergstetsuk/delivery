@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/black"
+	android:orientation="vertical">
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+<RelativeLayout
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_margin="5dp" >
+	<TextView
+		android:id="@+id/uad_header"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:text="@string/uad_header"
+		android:textSize="26dp" />
+	<EditText
+		android:id="@+id/uad_login"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_header"
+		android:ems="10"
+		android:hint="@string/uad_login"
+		android:nextFocusDown="@+id/uad_contact"
+		android:singleLine="true"
+		android:inputType="textCapWords" />
+	<EditText
+		android:id="@+id/uad_contact"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_login"
+		android:hint="@string/uad_contact"
+		android:nextFocusDown="@+id/uad_phone"
+		android:singleLine="true"
+		android:inputType="textCapWords" />
+	<EditText
+		android:id="@+id/uad_phone"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_password"
+		android:hint="@string/uad_phone"
+		android:singleLine="true"
+		android:inputType="phone"/>
+	<Spinner
+		android:id="@+id/uad_access"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_phone"
+		android:hint="@string/uad_access"
+		android:nextFocusDown="@+id/uad_access"
+		android:singleLine="true"
+		android:entries="@array/AccessTypes" />
+	<EditText
+		android:id="@+id/uad_password"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_access"
+		android:hint="@string/uad_password"
+		android:singleLine="true"
+		android:inputType="textPassword"/>
+	<TextView
+		android:id="@+id/uad_changed"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_password"
+		android:text="@string/uad_changed"
+		android:textSize="10dp" />
+<LinearLayout
+	android:id="@+id/layout_submit"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_below="@id/uad_changed"
+	android:layout_margin="5dp"
+	android:orientation="horizontal"
+	android:weightSum="2" >
+	<Button
+		android:id="@+id/button_ok"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:text="@string/uad_ok" />
+	<Button
+		android:id="@+id/button_cancel"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:text="@string/uad_cancel" />
+</LinearLayout>
+</RelativeLayout>
+</ScrollView>
+</LinearLayout>

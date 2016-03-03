@@ -14,14 +14,8 @@ import android.text.Html;
 
 public class StatisticsFragment extends Fragment {
 
-    public static StatisticsFragment newInstance(String text) {
-
+    public static StatisticsFragment newInstance() {
         StatisticsFragment f = new StatisticsFragment();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
         return f;
     }
 

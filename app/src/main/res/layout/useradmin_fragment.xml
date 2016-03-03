@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/black"
+	android:orientation="vertical">
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<TextView
+			android:id="@+id/tvHeader"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:text="@string/FragmentUserAdmin"
+			android:textSize="26dp" />
+		<Spinner
+			android:id="@+id/svUserAdminSortMode"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:text="Сортування"
+			android:textSize="26dp"
+			android:popupBackground="@android:color/black"
+			android:entries="@array/UserAdminSortModes" />
+	</LinearLayout>
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/UserAdminSearchDialog"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:visibility="gone" >
+		<EditText
+			android:id="@+id/UserAdminSearchText"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:singleLine="true"
+			android:layout_weight="1"
+			android:hint="@string/SearchText"
+			android:layout_toLeftOf="@+id/closeSearch"
+			android:inputType="textCapWords" />
+		<ImageButton
+			android:id="@+id/UserAdminCloseSearch"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="?android:selectableItemBackground"
+			android:layout_alignParentRight="true"
+			android:src="@mipmap/ic_close_search" />
+	</LinearLayout>
+
+	<ListView
+		android:id="@+id/lvUserAdminList"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1" />
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/btAddUserButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/addContactButtonLabel" />
+
+		<Button
+			android:id="@+id/btSearchUserButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/searchContactButtonLabel" />
+	</LinearLayout>
+</LinearLayout>

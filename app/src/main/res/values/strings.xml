@@ -12,6 +12,7 @@
 	<string name="FragmentOrders">Замовлення</string>
 	<string name="FragmentFuel">Пальне</string>
 	<string name="FragmentStatistics">Статистика</string>
+	<string name="FragmentUserAdmin">Адміністрування</string>
 
 	<string name="addContactButtonLabel">Додати</string>
 	<string name="searchContactButtonLabel">Пошук</string>
@@ -45,6 +46,10 @@
 		<item>Вибрати...</item>
 	</string-array>
 
+	<string-array name="UserAdminSortModes">
+		<item>@string/uad_login</item>
+	</string-array>
+
 	<string-array name="StreetCategories">
 		<item>вул.</item>
 		<item>пров.</item>
@@ -64,6 +69,11 @@
 		<item>В процесі</item>
 		<item>Доставлено</item>
 		<item>Відмова</item>
+	</string-array>
+
+	<string-array name="AccessTypes">
+		<item>Адміністратор</item>
+		<item>Користувач</item>
 	</string-array>
 
 	<string name="ecl_header">Картка клієнта</string>
@@ -130,5 +140,15 @@
 	<string name="efu_cancel">Відміна</string>
 	<string name="efu_firstorderdate">Дата першого замовлення</string>
 	<string name="efu_lastorderdate">Дата останнього замовлення</string>
+
+	<string name="uad_header">Користувач</string>
+	<string name="uad_login">Логін</string>
+	<string name="uad_contact">ПІБ</string>
+	<string name="uad_phone">Телефон</string>
+	<string name="uad_access">Доступ</string>
+	<string name="uad_password">Пароль</string>
+	<string name="uad_changed">Остання зміна</string>
+	<string name="uad_ok">OK</string>
+	<string name="uad_cancel">Відміна</string>
 
 </resources>

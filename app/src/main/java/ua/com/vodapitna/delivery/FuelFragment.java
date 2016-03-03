@@ -20,14 +20,8 @@ import android.text.Editable;
 
 public class FuelFragment extends Fragment {
 
-    public static FuelFragment newInstance(String text) {
-
+    public static FuelFragment newInstance() {
         FuelFragment f = new FuelFragment();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
         return f;
     }
 

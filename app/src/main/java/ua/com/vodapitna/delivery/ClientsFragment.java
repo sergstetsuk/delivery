@@ -20,14 +20,8 @@ import android.text.Editable;
 
 public class ClientsFragment extends Fragment {
 
-    public static ClientsFragment newInstance(String text) {
-
+    public static ClientsFragment newInstance() {
         ClientsFragment f = new ClientsFragment();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
         return f;
     }
 
