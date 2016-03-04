@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
+import java.security.MessageDigest;
 
 public class MainActivity extends FragmentActivity {
 
@@ -65,4 +65,18 @@ public class MainActivity extends FragmentActivity {
             return 5;//MainActivity.isAdmin()?5:4;
         }
     }
+	public static final String md5(final String toEncrypt) {
+		try {
+			final MessageDigest digest = MessageDigest.getInstance("md5");
+			digest.update(toEncrypt.getBytes());
+			final byte[] bytes = digest.digest();
+			final StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < bytes.length; i++) {
+				sb.append(String.format("%02X", bytes[i]));
+			}
+			return sb.toString().toLowerCase();
+		} catch (Exception exc) {
+			return null;
+		}
+	}
 }
