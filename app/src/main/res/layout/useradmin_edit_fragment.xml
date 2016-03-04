@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@android:color/black"
+	android:background="@android:color/white"
 	android:orientation="vertical">
 <ScrollView
 	xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,8 +43,9 @@
 		android:id="@+id/uad_phone"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/uad_password"
+		android:layout_below="@+id/uad_contact"
 		android:hint="@string/uad_phone"
+		android:nextFocusDown="@+id/uad_access"
 		android:singleLine="true"
 		android:inputType="phone"/>
 	<Spinner
@@ -53,7 +54,7 @@
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/uad_phone"
 		android:hint="@string/uad_access"
-		android:nextFocusDown="@+id/uad_access"
+		android:nextFocusDown="@+id/uad_password"
 		android:singleLine="true"
 		android:entries="@array/AccessTypes" />
 	<EditText

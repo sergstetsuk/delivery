@@ -41,11 +41,11 @@ public class UserAdminEditFragment extends DialogFragment {
 	builder.setView(customDialogView);
 
 	final EditText Login = (EditText) customDialogView.findViewById(R.id.uad_login);
-	final EditText Contact = (EditText) customDialogView.findViewById(R.id.ecl_house);
-	final EditText Phone = (EditText) customDialogView.findViewById(R.id.ecl_phone);
-	final Spinner Access = (Spinner) customDialogView.findViewById(R.id.ecl_cat);
-	final EditText Password = (EditText) customDialogView.findViewById(R.id.ecl_type);
-	final TextView Changed = (TextView) customDialogView.findViewById(R.id.ecl_changed);
+	final EditText Contact = (EditText) customDialogView.findViewById(R.id.uad_contact);
+	final EditText Phone = (EditText) customDialogView.findViewById(R.id.uad_phone);
+	final Spinner Access = (Spinner) customDialogView.findViewById(R.id.uad_access);
+	final EditText Password = (EditText) customDialogView.findViewById(R.id.uad_password);
+	final TextView Changed = (TextView) customDialogView.findViewById(R.id.uad_changed);
 	Button useradminOkButton = (Button) customDialogView.findViewById(R.id.button_ok);
 	Button useradminCancelButton = (Button) customDialogView.findViewById(R.id.button_cancel);
 
@@ -53,7 +53,7 @@ public class UserAdminEditFragment extends DialogFragment {
 	final SQLHandler mDbHandler = new SQLHandler(getContext());
 
 	if(useradminid != null) {
-		Cursor mCursor = mDbHandler.selectQuery("SELECT l.*, datetime(l.changed,'localtime') as localchanged FROM UserAdmin l WHERE id=" + useradminid + ";");
+		Cursor mCursor = mDbHandler.selectQuery("SELECT l.*, datetime(l.changed,'localtime') as localchanged FROM login l WHERE id=" + useradminid + ";");
 		mCursor.moveToFirst();
 		Login.setText(mCursor.getString(mCursor.getColumnIndex("login")));
 		Contact.setText(mCursor.getString(mCursor.getColumnIndex("contact")));
@@ -67,18 +67,19 @@ public class UserAdminEditFragment extends DialogFragment {
 	useradminOkButton.setOnClickListener(new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
+				Log.d("vodapitna.WATCH","USERADMIN EDIT OK button");
 			if(useradminid != null) {
 				SQLHandler mDbHandler = new SQLHandler(getContext());
-				String query = "UPDATE UserAdmin SET "
+				String query = "UPDATE login SET "
 					+ "contact ='" + Contact.getText() + "'"
 					+ ",phone='" + Phone.getText() + "'"
 					+ ",changed=CURRENT_TIMESTAMP"
 					+ " WHERE id='"+useradminid+"';";
-				mDbHandler.executeQuery(query);
 				Log.d("vodapitna.SQLWATCH",query);
+				mDbHandler.executeQuery(query);
 			} else {
 				SQLHandler mDbHandler = new SQLHandler(getContext());
-				String query = "INSERT INTO UserAdmin (login, contact, phone, changed)"
+				String query = "INSERT INTO login (login, contact, phone, access, changed)"
 					+" VALUES ("
 					+"'"+Login.getText()+"'"
 					+",'"+Contact.getText()+"'"
@@ -86,8 +87,8 @@ public class UserAdminEditFragment extends DialogFragment {
 					+",'"+Access.getSelectedItem()+"'"
 					+",CURRENT_TIMESTAMP"
 					+");";
-				mDbHandler.executeQuery(query);
 				Log.d("vodapitna.SQLWATCH",query);
+				mDbHandler.executeQuery(query);
 			}
 			ListView lv = (ListView) getActivity().findViewById(R.id.lvUserAdminList);
 			UserAdminAdapter ad = (UserAdminAdapter) lv.getAdapter();

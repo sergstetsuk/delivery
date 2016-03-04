@@ -62,7 +62,7 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return MainActivity.isAdmin()?5:4;
+            return 5;//MainActivity.isAdmin()?5:4;
         }
     }
 }

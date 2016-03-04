@@ -17,6 +17,7 @@
 			android:layout_height="wrap_content"
 			android:layout_centerHorizontal="true"
 			android:layout_centerVertical="true"
+			android:textColor="#FFFFFF"
 			android:text="@string/FragmentUserAdmin"
 			android:textSize="26dp" />
 		<Spinner
@@ -27,7 +28,8 @@
 			android:layout_centerVertical="true"
 			android:text="Сортування"
 			android:textSize="26dp"
-			android:popupBackground="@android:color/black"
+			android:background="@android:color/darker_gray"
+			android:popupBackground="@android:color/darker_gray"
 			android:entries="@array/UserAdminSortModes" />
 	</LinearLayout>
 
@@ -45,6 +47,7 @@
 			android:singleLine="true"
 			android:layout_weight="1"
 			android:hint="@string/SearchText"
+			android:textColor="#FFFFFF"
 			android:layout_toLeftOf="@+id/closeSearch"
 			android:inputType="textCapWords" />
 		<ImageButton
@@ -69,16 +72,18 @@
 		android:orientation="horizontal">
 
 		<Button
-			android:id="@+id/btAddUserButton"
+			android:id="@+id/btAddUserAdminButton"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:textColor="#FFFFFF"
 			android:layout_weight="1"
 			android:text="@string/addContactButtonLabel" />
 
 		<Button
-			android:id="@+id/btSearchUserButton"
+			android:id="@+id/btSearchUserAdminButton"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:textColor="#FFFFFF"
 			android:layout_weight="1"
 			android:text="@string/searchContactButtonLabel" />
 	</LinearLayout>

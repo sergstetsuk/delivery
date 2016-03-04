@@ -61,7 +61,6 @@ public class UserAdminAdapter extends BaseAdapter {
 	}
 
 	public int getCount() {
-		if (mCursor == null) return 0;
 		return mCursor.getCount();
 	}
 
@@ -82,7 +81,7 @@ public class UserAdminAdapter extends BaseAdapter {
 		if (convertView == null)
 			vi = inflater.inflate(R.layout.useradmin_adapter, null);
 
-		TextView login = (TextView) vi.findViewById(R.id.login); // name
+		TextView login = (TextView) vi.findViewById(R.id.login);
 		final TextView contact = (TextView) vi.findViewById(R.id.contact);
 		final TextView phone = (TextView) vi.findViewById(R.id.phone);
 		final long id = getItemId(position);

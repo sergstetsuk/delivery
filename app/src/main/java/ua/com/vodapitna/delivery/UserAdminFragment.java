@@ -32,8 +32,8 @@ public class UserAdminFragment extends Fragment {
 	final View searchdialog = (View) v.findViewById(R.id.UserAdminSearchDialog);
         final ListView lv = (ListView) v.findViewById(R.id.lvUserAdminList);
         Spinner spinOrder = (Spinner) v.findViewById(R.id.svUserAdminSortMode);
-        Button btadd = (Button) v.findViewById(R.id.btAddContactButton);
-        Button btsearch = (Button) v.findViewById(R.id.btSearchContactButton);
+        Button btadd = (Button) v.findViewById(R.id.btAddUserAdminButton);
+        Button btsearch = (Button) v.findViewById(R.id.btSearchUserAdminButton);
         ImageButton btclosesearch = (ImageButton) v.findViewById(R.id.UserAdminCloseSearch);
 	final EditText searchtext = (EditText) v.findViewById(R.id.UserAdminSearchText);
         UserAdminAdapter adapter = new UserAdminAdapter(getActivity());
@@ -41,11 +41,11 @@ public class UserAdminFragment extends Fragment {
         btadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               UserAdminEditFragment clienteditdialog = new UserAdminEditFragment();
+               UserAdminEditFragment useradmineditdialog = new UserAdminEditFragment();
                 Bundle b = new Bundle();
                 b.putString("useradminid", null);
-                clienteditdialog.setArguments(b);
-                clienteditdialog.show(getFragmentManager(), null);
+                useradmineditdialog.setArguments(b);
+                useradmineditdialog.show(getFragmentManager(), null);
                 UserAdminAdapter ad = (UserAdminAdapter) lv.getAdapter();
                 ad.notifyDataSetChanged();
             }
