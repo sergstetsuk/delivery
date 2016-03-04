@@ -38,6 +38,73 @@ public class UserAdminFragment extends Fragment {
 	final EditText searchtext = (EditText) v.findViewById(R.id.UserAdminSearchText);
         UserAdminAdapter adapter = new UserAdminAdapter(getActivity());
 
+	searchtext.addTextChangedListener(new TextWatcher(){
+		@Override
+		public void afterTextChanged(Editable s){
+			UserAdminAdapter ad = (UserAdminAdapter) lv.getAdapter();
+			ad.setFilter(s.toString());
+			ad.notifyDataSetChanged();
+		}
+		@Override
+		public void beforeTextChanged(CharSequence s,int start,int count,int before){
+		}
+		@Override
+		public void onTextChanged(CharSequence s,int start,int count,int before){
+		}
+	});
+        btclosesearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+		searchtext.setText("");
+		searchdialog.setVisibility(View.GONE);
+                UserAdminAdapter ad = (UserAdminAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+            }
+        });
+	searchtext.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) {
+			InputMethodManager imm =  (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+			if (hasFocus) {
+					imm.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT);
+					//~ imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+				} else {
+					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+			}
+		}
+	});
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                UserAdminEditFragment clienteditdialog = new UserAdminEditFragment();
+                Bundle b = new Bundle();
+                b.putString("useradminid", String.valueOf(id));
+                clienteditdialog.setArguments(b);
+                clienteditdialog.show(getFragmentManager(), null);
+            }
+        });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                SQLHandler mDbHandler = new SQLHandler(getContext());
+                mDbHandler.executeQuery("DELETE FROM login WHERE id='" + String.valueOf(id) + "';");
+                UserAdminAdapter ad = (UserAdminAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+		return true;
+            }
+        });
+        spinOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                UserAdminAdapter ad = (UserAdminAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+            }
+            //@Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                UserAdminAdapter ad = (UserAdminAdapter) lv.getAdapter();
+                ad.notifyDataSetChanged();
+            }
+        });
         btadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

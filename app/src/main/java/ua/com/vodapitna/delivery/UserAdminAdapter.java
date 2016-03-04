@@ -38,14 +38,12 @@ public class UserAdminAdapter extends BaseAdapter {
 		String Sort = "ORDER BY l.login ASC";
 		if (sortselect!=null) {
 			if(sortselect.getSelectedItemId()==1) {
-				Sort = "ORDER BY l.login ASC";
+				Sort = "ORDER BY l.contact ASC";
 			}
 		}
 		String query = "SELECT l.* FROM login l WHERE " + mFilter + " " + Sort +";";
-		Log.d("vodapitna:useradminAdapter","1");
-		Log.d("vodapitna:useradminAdapter",query);
+		Log.d("vodapitna:SQLWATCH",query);
 		mCursor = mDbHandler.selectQuery(query);
-		Log.d("vodapitna:useradminAdapter","2");
 		super.notifyDataSetChanged();
 	}
 

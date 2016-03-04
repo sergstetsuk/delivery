@@ -48,6 +48,7 @@
 
 	<string-array name="UserAdminSortModes">
 		<item>@string/uad_login</item>
+		<item>@string/uad_contact</item>
 	</string-array>
 
 	<string-array name="StreetCategories">
