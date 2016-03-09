@@ -1,6 +1,7 @@
 package ua.com.vodapitna.delivery;
 
 import android.os.Bundle;
+import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -18,7 +19,16 @@ public class MainActivity extends FragmentActivity {
 	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 	AuthDialogFragment dialog = new AuthDialogFragment();
-	dialog.show(getSupportFragmentManager(),"AuthDialog");
+	//if no users at all, the first is admin
+	SQLHandler mDbHandler = new SQLHandler(getApplicationContext());
+	Cursor mCursor = mDbHandler.selectQuery("SELECT count(*) as count FROM login WHERE access='Адміністратор';");
+	mCursor.moveToFirst();
+	if(!mCursor.getString(mCursor.getColumnIndex("count")).equals("0")) {
+		dialog.show(getSupportFragmentManager(),"AuthDialog");
+		return;
+	}
+       setAccessMode("Адміністратор");
+       start();
 
         //~ ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         //~ pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
@@ -28,7 +38,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     public static boolean isAdmin() {
-	    return ACCESS_MODE.compareTo("admin") == 0;
+	    return ACCESS_MODE.compareTo("Адміністратор") == 0;
     }
 
     public void start() {
@@ -62,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return 5;//MainActivity.isAdmin()?5:4;
+            return MainActivity.isAdmin()?5:4;
         }
     }
 	public static final String md5(final String toEncrypt) {

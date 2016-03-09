@@ -85,7 +85,7 @@ private static final String SCRIPT_CREATE_DATABASE = ""
 		+"digest TEXT, "
 		+"access TEXT, "
 		+"phone TEXT, "
-		+"contact TEXT,"
+		+"contact TEXT, "
 		+"changed TIMESTAMP, "
 		+"PRIMARY KEY (id)"
 	+");";

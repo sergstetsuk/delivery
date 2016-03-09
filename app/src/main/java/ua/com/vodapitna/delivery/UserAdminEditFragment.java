@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.widget.FilterQueryProvider;
+import android.widget.Toast;
 import android.util.Log;
 
 /**
@@ -64,32 +66,59 @@ public class UserAdminEditFragment extends DialogFragment {
 		mCursor.close();
         }
 
+	/*insert or update fields of user account including auth digest*/
 	useradminOkButton.setOnClickListener(new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-				Log.d("vodapitna.WATCH","USERADMIN EDIT OK button");
-			if(useradminid != null) {
-				SQLHandler mDbHandler = new SQLHandler(getContext());
-				String query = "UPDATE login SET "
-					+ "contact ='" + Contact.getText() + "'"
-					+ ",phone='" + Phone.getText() + "'"
-					+ ",changed=CURRENT_TIMESTAMP"
-					+ " WHERE id='"+useradminid+"';";
-				Log.d("vodapitna.SQLWATCH",query);
-				mDbHandler.executeQuery(query);
-			} else {
-				SQLHandler mDbHandler = new SQLHandler(getContext());
-				String query = "INSERT INTO login (login, contact, phone, access, changed)"
-					+" VALUES ("
-					+"'"+Login.getText()+"'"
-					+",'"+Contact.getText()+"'"
-					+",'"+Phone.getText()+"'"
-					+",'"+Access.getSelectedItem()+"'"
-					+",CURRENT_TIMESTAMP"
-					+");";
-				Log.d("vodapitna.SQLWATCH",query);
-				mDbHandler.executeQuery(query);
+			if(Password.getText().toString().trim().equals("")){
+				//todo: text into strings
+				Toast.makeText(getActivity(),"Пароль вказувати обов'язково",Toast.LENGTH_SHORT).show();
+				return;
 			}
+			SQLHandler mDbHandler;
+			Cursor mCursor;
+			String query;
+			if(useradminid != null) {
+				mDbHandler = new SQLHandler(getContext());
+				query = "UPDATE login SET "
+					+ "login = '" + Login.getText() + "'"
+					+ ",contact = '" + Contact.getText() + "'"
+					+ ",phone = '" + Phone.getText() + "'"
+					+ ",access = '" + Access.getSelectedItem().toString() + "'"
+					+ ",changed = CURRENT_TIMESTAMP"
+					+ " WHERE id = '"+useradminid+"';";
+				Log.d("vodapitna.SQLWATCH",query);
+				mDbHandler.executeQuery(query);
+				query = "SELECT * FROM login WHERE id='"+useradminid+"';";
+			} else {
+				mDbHandler = new SQLHandler(getContext());
+				ContentValues values = new ContentValues();
+				values.put("login",Login.getText().toString());
+				values.put("contact",Contact.getText().toString());
+				values.put("phone",Phone.getText().toString());
+				values.put("access",Access.getSelectedItem().toString());
+				long rowid = mDbHandler.insert("login",null,values);
+				query = "UPDATE login SET changed = CURRENT_TIMESTAMP WHERE id='"+rowid+"';";
+				Log.d("vodapitna.SQLWATCH",query);
+				mDbHandler.executeQuery(query);
+				query = "SELECT * FROM login WHERE id='"+rowid+"';";
+			}
+				Log.d("vodapitna.SQLWATCH",query);
+				mCursor = mDbHandler.selectQuery(query);
+				mCursor.moveToFirst();
+				String digest = MainActivity.md5(mCursor.getString(mCursor.getColumnIndex("id"))
+					+ mCursor.getString(mCursor.getColumnIndex("login"))
+					+ mCursor.getString(mCursor.getColumnIndex("contact"))
+					+ mCursor.getString(mCursor.getColumnIndex("phone"))
+					+ mCursor.getString(mCursor.getColumnIndex("access"))
+					+ Password.getText().toString()
+					+ mCursor.getString(mCursor.getColumnIndex("changed")));
+				query = "UPDATE login SET "
+					+ "digest ='" + digest + "'"
+					+ " WHERE id = '"+mCursor.getString(mCursor.getColumnIndex("id"))+"';";
+				Log.d("vodapitna.SQLWATCH",query);
+				mDbHandler.executeQuery(query);
+
 			ListView lv = (ListView) getActivity().findViewById(R.id.lvUserAdminList);
 			UserAdminAdapter ad = (UserAdminAdapter) lv.getAdapter();
 			ad.notifyDataSetChanged();
