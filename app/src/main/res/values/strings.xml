@@ -2,6 +2,10 @@
 	<string name="app_name">Delivery</string>
 	<string name="action_settings">Налаштування</string>
 
+	<string name="msg_invalid_user">Корстувач з таким логіном відсутній</string>
+	<string name="msg_invalid_password">Неправильно введений пароль</string>
+	<string name="msg_password_mandatory">Пароль вказувати обов\'язково</string>
+
 	<string name="auth_dialog">Авторизація</string>
 	<string name="auth_dialog_ok">Вхід</string>
 	<string name="auth_dialog_cancel">Відміна</string>

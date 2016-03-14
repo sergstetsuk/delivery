@@ -72,7 +72,7 @@ public class UserAdminEditFragment extends DialogFragment {
 		public void onClick(View v) {
 			if(Password.getText().toString().trim().equals("")){
 				//todo: text into strings
-				Toast.makeText(getActivity(),"Пароль вказувати обов'язково",Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.msg_password_mandatory),Toast.LENGTH_SHORT).show();
 				return;
 			}
 			SQLHandler mDbHandler;

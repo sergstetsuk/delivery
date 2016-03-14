@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Gravity;
 import android.widget.Toast;
 import android.util.Log;
 
@@ -64,7 +65,12 @@ public class AuthDialogFragment extends DialogFragment {
 					//check password against digest
 					Cursor mCursor = mDbHandler.selectQuery("SELECT * FROM login WHERE login='"+mEditText.getText()+"';");
 					if(mCursor.getCount() == 0) {
-						//getActivity().finish();
+						Toast toast =
+							Toast.makeText(getActivity()
+							,getActivity().getResources().getString(R.string.msg_invalid_user)
+							,Toast.LENGTH_SHORT);
+						toast.setGravity(Gravity.CENTER,0,0);
+						toast.show();
 						return;
 					}
 					mCursor.moveToFirst();
@@ -79,6 +85,13 @@ public class AuthDialogFragment extends DialogFragment {
 					       ((MainActivity)getActivity()).setAccessMode(mCursor.getString(mCursor.getColumnIndex("access")));
 					       ((MainActivity)getActivity()).start();
 						dismiss();
+					} else {
+						Toast toast =
+							Toast.makeText(getActivity()
+							,getActivity().getResources().getString(R.string.msg_invalid_password)
+							,Toast.LENGTH_SHORT);
+						toast.setGravity(Gravity.CENTER,0,0);
+						toast.show();
 					}
 				}
 			});
