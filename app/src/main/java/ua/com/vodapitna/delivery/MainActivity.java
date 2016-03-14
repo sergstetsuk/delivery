@@ -1,6 +1,7 @@
 package ua.com.vodapitna.delivery;
 
 import android.os.Bundle;
+import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -12,9 +13,11 @@ import java.security.MessageDigest;
 public class MainActivity extends FragmentActivity {
 
 	private static String ACCESS_MODE;
+	private static FragmentActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+	instance = this;
 	//~ PACKAGE_NAME = getApplicationContext().getPackageName();
 	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -32,6 +35,9 @@ public class MainActivity extends FragmentActivity {
 
         //~ ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         //~ pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+    }
+    public static Context getContext() {
+        return instance.getApplicationContext();
     }
     public void setAccessMode(String am) {
 	    ACCESS_MODE = am;

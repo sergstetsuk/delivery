@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
+import android.widget.Toast;
 import android.util.Log;
 
 public class SQLDBHelper extends SQLiteOpenHelper {
@@ -141,7 +142,6 @@ private static final String SCRIPT_CREATE_DATABASE = ""
 		try {
 			File sd = Environment.getExternalStorageDirectory();
 			File data = Environment.getDataDirectory();
-			//~ Log.d("vodapitna.export","exportDB " + Environment.getExternalStorageDirectory().getAbsolutePath());
 			//~ Log.d("vodapitna.export","exportDB1 " + Environment.getDataDirectory().getAbsolutePath());
 
 			if (sd.canWrite()) {
@@ -150,6 +150,9 @@ private static final String SCRIPT_CREATE_DATABASE = ""
 				//~ Log.d("vodapitna.backupDBPath",backupDBPath);
 				File currentDB = scontext.getDatabasePath(DATABASE_NAME);
 				File backupDB = new File(sd, backupDBPath);
+				Toast.makeText(MainActivity.getContext()
+					,currentDB.getAbsolutePath() + "\n" + backupDB.getAbsolutePath()
+					,Toast.LENGTH_SHORT).show();
 
 				if (currentDB.exists()) {
 					FileChannel src = new FileInputStream(currentDB).getChannel();
