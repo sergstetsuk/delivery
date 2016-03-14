@@ -20,16 +20,29 @@
 		android:layout_centerHorizontal="true"
 		android:text="@string/ecl_header"
 		android:textSize="26dp" />
+	<TextView
+		android:id="@+id/ecl_name_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_header"
+		android:hint="@string/ecl_name"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_name"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/ecl_header"
-		android:ems="10"
 		android:hint="@string/ecl_name"
 		android:nextFocusDown="@+id/ecl_cat"
 		android:singleLine="true"
 		android:inputType="textCapWords" />
+	<TextView
+		android:id="@+id/ecl_cat_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_name"
+		android:hint="@string/ecl_cat"
+		android:textSize="10dp" />
 	<Spinner
 		android:id="@+id/ecl_cat"
 		android:layout_width="fill_parent"
@@ -39,6 +52,13 @@
 		android:nextFocusDown="@+id/ecl_addr"
 		android:singleLine="true"
 		android:entries="@array/StreetCategories" />
+	<TextView
+		android:id="@+id/ecl_addr_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_cat"
+		android:hint="@string/ecl_addr"
+		android:textSize="10dp" />
 	<AutoCompleteTextView
 		android:id="@+id/ecl_addr"
 		android:layout_width="fill_parent"
@@ -49,6 +69,13 @@
 		android:inputType="textCapWords"
 		android:completionThreshold="2"
 		android:imeOptions="actionNext" />
+	<TextView
+		android:id="@+id/ecl_house_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_addr"
+		android:hint="@string/ecl_house"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_house"
 		android:layout_width="fill_parent"
@@ -58,6 +85,13 @@
 		android:inputType="number"
 		android:digits="0123456789абвгдеєжзиіїклмнопрстуфхцчшщюя"
 		android:singleLine="true" />
+	<TextView
+		android:id="@+id/ecl_office_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_house"
+		android:hint="@string/ecl_office"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_office"
 		android:layout_width="fill_parent"
@@ -66,6 +100,13 @@
 		android:hint="@string/ecl_office"
 		android:singleLine="true"
 		android:inputType="number" />
+	<TextView
+		android:id="@+id/ecl_floor_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_office"
+		android:hint="@string/ecl_floor"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_floor"
 		android:layout_width="fill_parent"
@@ -74,6 +115,13 @@
 		android:hint="@string/ecl_floor"
 		android:singleLine="true"
 		android:inputType="number"/>
+	<TextView
+		android:id="@+id/ecl_quantity_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_floor"
+		android:hint="@string/ecl_quantity"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_quantity"
 		android:layout_width="fill_parent"
@@ -82,6 +130,13 @@
 		android:hint="@string/ecl_quantity"
 		android:singleLine="true"
 		android:inputType="number"/>
+	<TextView
+		android:id="@+id/ecl_price_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_quantity"
+		android:hint="@string/ecl_price"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_price"
 		android:layout_width="fill_parent"
@@ -90,6 +145,13 @@
 		android:hint="@string/ecl_price"
 		android:singleLine="true"
 		android:inputType="numberDecimal"/>
+	<TextView
+		android:id="@+id/ecl_bottletype_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_price"
+		android:hint="@string/ecl_bottletype"
+		android:textSize="10dp" />
 	<Spinner
 		android:id="@+id/ecl_bottletype"
 		android:layout_width="fill_parent"
@@ -98,6 +160,13 @@
 		android:hint="@string/ecl_bottletype"
 		android:singleLine="true"
 		android:entries="@array/BottleTypes" />
+	<TextView
+		android:id="@+id/ecl_cooler_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_bottletype"
+		android:hint="@string/ecl_cooler"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_cooler"
 		android:layout_width="fill_parent"
@@ -106,6 +175,13 @@
 		android:hint="@string/ecl_cooler"
 		android:singleLine="true"
 		android:inputType="text"/>
+	<TextView
+		android:id="@+id/ecl_phone_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_cooler"
+		android:hint="@string/ecl_phone"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_phone"
 		android:layout_width="fill_parent"
@@ -114,6 +190,13 @@
 		android:hint="@string/ecl_phone"
 		android:singleLine="true"
 		android:inputType="phone"/>
+	<TextView
+		android:id="@+id/ecl_contact_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_phone"
+		android:hint="@string/ecl_contact"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_contact"
 		android:layout_width="fill_parent"
@@ -122,6 +205,13 @@
 		android:hint="@string/ecl_contact"
 		android:singleLine="true"
 		android:inputType="textCapWords"/>
+	<TextView
+		android:id="@+id/ecl_phone1_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_contact"
+		android:hint="@string/ecl_phone1"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_phone1"
 		android:layout_width="fill_parent"
@@ -130,6 +220,13 @@
 		android:hint="@string/ecl_phone1"
 		android:singleLine="true"
 		android:inputType="phone"/>
+	<TextView
+		android:id="@+id/ecl_contact1_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_phone1"
+		android:hint="@string/ecl_contact1"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_contact1"
 		android:layout_width="fill_parent"
@@ -138,6 +235,13 @@
 		android:hint="@string/ecl_contact1"
 		android:singleLine="true"
 		android:inputType="textCapWords" />
+	<TextView
+		android:id="@+id/ecl_comment_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_contact1"
+		android:hint="@string/ecl_comment"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_comment"
 		android:layout_width="fill_parent"
@@ -145,6 +249,13 @@
 		android:layout_below="@+id/ecl_contact1"
 		android:singleLine="true"
 		android:hint="@string/ecl_comment" />
+	<TextView
+		android:id="@+id/ecl_firstorderdate_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_comment"
+		android:hint="@string/ecl_firstorderdate"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_firstorderdate"
 		android:layout_width="fill_parent"
@@ -153,6 +264,13 @@
 		android:hint="@string/ecl_firstorderdate"
 		android:singleLine="true"
 		android:inputType="date"/>
+	<TextView
+		android:id="@+id/ecl_lastorderdate_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_firstorderdate"
+		android:hint="@string/ecl_lastorderdate"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_lastorderdate"
 		android:layout_width="fill_parent"
@@ -161,6 +279,13 @@
 		android:hint="@string/ecl_lastorderdate"
 		android:singleLine="true"
 		android:inputType="date" />
+	<TextView
+		android:id="@+id/ecl_type_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_lastorderdate"
+		android:hint="@string/ecl_type"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_type"
 		android:layout_width="fill_parent"
@@ -168,6 +293,13 @@
 		android:layout_below="@+id/ecl_lastorderdate"
 		android:singleLine="true"
 		android:hint="@string/ecl_type" />
+	<TextView
+		android:id="@+id/ecl_customid_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/ecl_type"
+		android:hint="@string/ecl_customid"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/ecl_customid"
 		android:layout_width="fill_parent"
