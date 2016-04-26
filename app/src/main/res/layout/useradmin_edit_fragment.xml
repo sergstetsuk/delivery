@@ -20,48 +20,83 @@
 		android:layout_centerHorizontal="true"
 		android:text="@string/uad_header"
 		android:textSize="26dp" />
+	<TextView
+		android:id="@+id/uad_login_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_header"
+		android:hint="@string/uad_login"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/uad_login"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/uad_header"
+		android:layout_below="@+id/uad_login_hint"
 		android:ems="10"
 		android:hint="@string/uad_login"
 		android:nextFocusDown="@+id/uad_contact"
 		android:singleLine="true"
 		android:inputType="text" />
-	<EditText
-		android:id="@+id/uad_contact"
+	<TextView
+		android:id="@+id/uad_contact_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/uad_login"
 		android:hint="@string/uad_contact"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/uad_contact"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_contact_hint"
+		android:hint="@string/uad_contact"
 		android:nextFocusDown="@+id/uad_phone"
 		android:singleLine="true"
 		android:inputType="textCapWords" />
-	<EditText
-		android:id="@+id/uad_phone"
+	<TextView
+		android:id="@+id/uad_phone_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/uad_contact"
 		android:hint="@string/uad_phone"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/uad_phone"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_phone_hint"
+		android:hint="@string/uad_phone"
 		android:nextFocusDown="@+id/uad_access"
 		android:singleLine="true"
 		android:inputType="phone"/>
-	<Spinner
-		android:id="@+id/uad_access"
+	<TextView
+		android:id="@+id/uad_access_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/uad_phone"
 		android:hint="@string/uad_access"
+		android:textSize="10dp" />
+	<Spinner
+		android:id="@+id/uad_access"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_access_hint"
+		android:hint="@string/uad_access"
 		android:nextFocusDown="@+id/uad_password"
 		android:singleLine="true"
 		android:entries="@array/AccessTypes" />
+	<TextView
+		android:id="@+id/uad_password_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/uad_access"
+		android:hint="@string/uad_password"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/uad_password"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/uad_access"
+		android:layout_below="@+id/uad_password_hint"
 		android:hint="@string/uad_password"
 		android:singleLine="true"
 		android:inputType="textPassword"/>

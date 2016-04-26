@@ -20,88 +20,151 @@
 		android:layout_centerHorizontal="true"
 		android:text="@string/efu_header"
 		android:textSize="26dp" />
+	<TextView
+		android:id="@+id/efu_car_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_header"
+		android:hint="@string/efu_car"
+		android:textSize="10dp" />
 	<AutoCompleteTextView
 		android:id="@+id/efu_car"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/efu_header"
+		android:layout_below="@+id/efu_car_hint"
 		android:hint="@string/efu_car"
 		android:nextFocusDown="@+id/efu_driver"
 		android:singleLine="true"
 		android:inputType="textCapWords"
 		android:completionThreshold="2"
 		android:imeOptions="actionNext" />
+	<TextView
+		android:id="@+id/efu_driver_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_car"
+		android:hint="@string/efu_driver"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/efu_driver"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/efu_car"
+		android:layout_below="@+id/efu_driver_hint"
 		android:ems="10"
 		android:hint="@string/efu_driver"
 		android:nextFocusDown="@+id/efu_starttimestamp"
 		android:singleLine="true"
 		android:inputType="textCapWords" />
+	<TextView
+		android:id="@+id/efu_starttimestamp_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_driver"
+		android:hint="@string/efu_starttimestamp"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/efu_starttimestamp"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/efu_driver"
+		android:layout_below="@+id/efu_starttimestamp_hint"
 		android:hint="@string/efu_starttimestamp"
 		android:nextFocusDown="@+id/efu_odometerstart"
 		android:inputType="number"
 		android:digits="0123456789-: "
 		android:singleLine="true" />
-	<EditText
-		android:id="@+id/efu_odometerstart"
+	<TextView
+		android:id="@+id/efu_odometerstart_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/efu_starttimestamp"
 		android:hint="@string/efu_odometerstart"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/efu_odometerstart"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_odometerstart_hint"
+		android:hint="@string/efu_odometerstart"
 		android:nextFocusDown="@+id/efu_finishtimestamp"
 		android:singleLine="true"
 		android:inputType="number" />
+	<TextView
+		android:id="@+id/efu_finishtimestamp_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_odometerstart"
+		android:hint="@string/efu_finishtimestamp"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/efu_finishtimestamp"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/efu_odometerstart"
+		android:layout_below="@+id/efu_finishtimestamp_hint"
 		android:hint="@string/efu_finishtimestamp"
 		android:nextFocusDown="@+id/efu_odometerend"
 		android:inputType="number"
 		android:digits="0123456789-: "
 		android:singleLine="true" />
-	<EditText
-		android:id="@+id/efu_odometerend"
+	<TextView
+		android:id="@+id/efu_odometerend_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/efu_finishtimestamp"
 		android:hint="@string/efu_odometerend"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/efu_odometerend"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_odometerend_hint"
+		android:hint="@string/efu_odometerend"
 		android:nextFocusDown="@+id/efu_fuelstart"
 		android:singleLine="true"
 		android:inputType="number" />
-	<EditText
-		android:id="@+id/efu_fuelstart"
+	<TextView
+		android:id="@+id/efu_fuelstart_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/efu_odometerend"
 		android:hint="@string/efu_fuelstart"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/efu_fuelstart"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_fuelstart_hint"
+		android:hint="@string/efu_fuelstart"
 		android:nextFocusDown="@+id/efu_fueladd"
 		android:singleLine="true"
 		android:inputType="number"/>
-	<EditText
-		android:id="@+id/efu_fueladd"
+	<TextView
+		android:id="@+id/efu_fueladd_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/efu_fuelstart"
 		android:hint="@string/efu_fueladd"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/efu_fueladd"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_fueladd_hint"
+		android:hint="@string/efu_fueladd"
 		android:nextFocusDown="@+id/efu_price"
 		android:singleLine="true"
 		android:inputType="number"/>
+	<TextView
+		android:id="@+id/efu_price_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/efu_fueladd"
+		android:hint="@string/efu_price"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/efu_price"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/efu_fueladd"
+		android:layout_below="@+id/efu_price_hint"
 		android:hint="@string/efu_price"
 		android:nextFocusDown="@+id/efu_changed"
 		android:singleLine="true"

@@ -21,143 +21,262 @@
 		android:text="@string/eor_header"
 		android:textSize="26dp" />
 	<TextView
-		android:id="@+id/eor_name"
+		android:id="@+id/eor_name_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_header"
+		android:hint="@string/eor_name"
+		android:textSize="10dp" />
+	<TextView
+		android:id="@+id/eor_name"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_name_hint"
 		android:ems="10"
 		android:hint="@string/eor_name"
 		android:nextFocusDown="@+id/eor_cat"
 		android:singleLine="true"
 		android:inputType="textCapWords" />
-	<Spinner
-		android:id="@+id/eor_cat"
+	<TextView
+		android:id="@+id/eor_cat_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_name"
 		android:hint="@string/eor_cat"
+		android:textSize="10dp" />
+	<Spinner
+		android:id="@+id/eor_cat"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_cat_hint"
+		android:hint="@string/eor_cat"
 		android:nextFocusDown="@+id/eor_addr"
 		android:singleLine="true"
 		android:entries="@array/StreetCategories" />
+	<TextView
+		android:id="@+id/eor_addr_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_cat"
+		android:hint="@string/eor_addr"
+		android:textSize="10dp" />
 	<AutoCompleteTextView
 		android:id="@+id/eor_addr"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/eor_cat"
+		android:layout_below="@+id/eor_addr_hint"
 		android:hint="@string/eor_addr"
 		android:singleLine="true"
 		android:inputType="textCapWords"
 		android:completionThreshold="2"
 		android:imeOptions="actionNext" />
-	<EditText
-		android:id="@+id/eor_house"
+	<TextView
+		android:id="@+id/eor_house_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_addr"
 		android:hint="@string/eor_house"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_house"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_house_hint"
+		android:hint="@string/eor_house"
 		android:inputType="number"
 		android:digits="0123456789абвгдеєжзиіїклмнопрстуфхцчшщюя"
 		android:singleLine="true" />
-	<EditText
-		android:id="@+id/eor_office"
+	<TextView
+		android:id="@+id/eor_office_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_house"
 		android:hint="@string/eor_office"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_office"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_office_hint"
+		android:hint="@string/eor_office"
 		android:singleLine="true"
 		android:inputType="number" />
-	<EditText
-		android:id="@+id/eor_floor"
+	<TextView
+		android:id="@+id/eor_floor_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_office"
 		android:hint="@string/eor_floor"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_floor"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_floor_hint"
+		android:hint="@string/eor_floor"
 		android:singleLine="true"
 		android:inputType="number"/>
-	<EditText
-		android:id="@+id/eor_quantity"
+	<TextView
+		android:id="@+id/eor_quantity_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_floor"
 		android:hint="@string/eor_quantity"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_quantity"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_quantity_hint"
+		android:hint="@string/eor_quantity"
 		android:singleLine="true"
 		android:inputType="number"/>
-	<EditText
-		android:id="@+id/eor_price"
+	<TextView
+		android:id="@+id/eor_price_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_quantity"
 		android:hint="@string/eor_price"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_price"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_price_hint"
+		android:hint="@string/eor_price"
 		android:singleLine="true"
 		android:inputType="numberDecimal"/>
-	<Spinner
-		android:id="@+id/eor_bottletype"
+	<TextView
+		android:id="@+id/eor_bottletype_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_price"
 		android:hint="@string/eor_bottletype"
+		android:textSize="10dp" />
+	<Spinner
+		android:id="@+id/eor_bottletype"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_bottletype_hint"
+		android:hint="@string/eor_bottletype"
 		android:singleLine="true"
 		android:entries="@array/BottleTypes" />
-	<EditText
-		android:id="@+id/eor_cooler"
+	<TextView
+		android:id="@+id/eor_cooler_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_bottletype"
 		android:hint="@string/eor_cooler"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_cooler"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_cooler_hint"
+		android:hint="@string/eor_cooler"
 		android:singleLine="true"
 		android:inputType="text"/>
-	<EditText
-		android:id="@+id/eor_phone"
+	<TextView
+		android:id="@+id/eor_phone_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_cooler"
 		android:hint="@string/eor_phone"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_phone"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_phone_hint"
+		android:hint="@string/eor_phone"
 		android:singleLine="true"
 		android:inputType="phone"/>
-	<EditText
-		android:id="@+id/eor_contact"
+	<TextView
+		android:id="@+id/eor_contact_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_phone"
 		android:hint="@string/eor_contact"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_contact"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_contact_hint"
+		android:hint="@string/eor_contact"
 		android:singleLine="true"
 		android:inputType="textCapWords"/>
-	<EditText
-		android:id="@+id/eor_phone1"
+	<TextView
+		android:id="@+id/eor_phone1_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_contact"
 		android:hint="@string/eor_phone1"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_phone1"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_phone1_hint"
+		android:hint="@string/eor_phone1"
 		android:singleLine="true"
 		android:inputType="phone"/>
-	<EditText
-		android:id="@+id/eor_contact1"
+	<TextView
+		android:id="@+id/eor_contact1_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_phone1"
 		android:hint="@string/eor_contact1"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_contact1"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_contact1_hint"
+		android:hint="@string/eor_contact1"
 		android:singleLine="true"
 		android:inputType="textCapWords" />
+	<TextView
+		android:id="@+id/eor_comment_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_contact1"
+		android:hint="@string/eor_comment"
+		android:textSize="10dp" />
 	<EditText
 		android:id="@+id/eor_comment"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/eor_contact1"
+		android:layout_below="@+id/eor_comment_hint"
 		android:singleLine="true"
 		android:hint="@string/eor_comment" />
-	<EditText
-		android:id="@+id/eor_ordertimestamp"
+	<TextView
+		android:id="@+id/eor_ordertimestamp_hint"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/eor_comment"
 		android:hint="@string/eor_ordertimestamp"
+		android:textSize="10dp" />
+	<EditText
+		android:id="@+id/eor_ordertimestamp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_ordertimestamp_hint"
+		android:hint="@string/eor_ordertimestamp"
 		android:singleLine="true"
 		android:inputType="date"/>
+	<TextView
+		android:id="@+id/eor_result_hint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/eor_ordertimestamp"
+		android:hint="@string/eor_result"
+		android:textSize="10dp" />
 	<Spinner
 		android:id="@+id/eor_result"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/eor_ordertimestamp"
+		android:layout_below="@+id/eor_result_hint"
 		android:hint="@string/eor_result"
 		android:singleLine="true"
 		android:entries="@array/ResultTypes" />
